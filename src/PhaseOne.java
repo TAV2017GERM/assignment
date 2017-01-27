@@ -1,43 +1,18 @@
-
-
 /**
  * Created by Geoffrey on 2017-01-27.
  */
-public class PhaseOne {
-    private boolean isEmpty = false;
-    private boolean parkStatus[] = new boolean[500];
-    private boolean canPark = false;
-    private boolean isMoving = false;
-    private boolean isParked = false;
+public interface PhaseOne {
 
 
-    public boolean[] MoveForward() {
+    public boolean[] MoveForward();
 
-        return parkStatus;
-    }
+    public boolean[] MoveBackward();
 
-    public boolean[] MoveBackward() {
+    public boolean Park();
 
-        return parkStatus;
-    }
+    public boolean unPark();
 
-    public boolean Park() {
+    public boolean[] Wherels();
 
-        return isParked;
-    }
-
-    public boolean unPark() {
-
-        return isParked;
-    }
-
-    public boolean[] Wherels() {
-
-        return parkStatus;
-    }
-
-    public boolean isEmpty() {
-
-        return isEmpty;
-    }
+    public boolean isEmpty();
 }
