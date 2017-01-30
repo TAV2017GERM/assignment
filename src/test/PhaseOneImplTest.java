@@ -65,7 +65,7 @@ public void testUnPark() throws Exception {
 * 
 */ 
 @Test
-public void testWherels() throws Exception { 
+public void testWhereIs() throws Exception {
 //TODO: Test goes here... 
 } 
 

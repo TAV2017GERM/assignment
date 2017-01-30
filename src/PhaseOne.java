@@ -12,7 +12,7 @@ public interface PhaseOne {
 
     public boolean unPark();
 
-    public boolean[] Wherels();
+    public boolean[] WhereIs();
 
     public boolean isEmpty();
 }

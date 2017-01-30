@@ -31,7 +31,7 @@ public class PhaseOneImpl implements PhaseOne{
         return isParked;
     }
 
-    public boolean[] Wherels() {
+    public boolean[] WhereIs() {
 
         return parkStatus;
     }
