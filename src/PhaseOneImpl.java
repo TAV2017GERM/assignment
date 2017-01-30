@@ -7,8 +7,8 @@ public class PhaseOneImpl implements PhaseOne{
     private boolean isEmpty = false;
     private boolean parkStatus[] = new boolean[500];
     private boolean canPark = false;
-    private boolean isMoving = false;
     private boolean isParked = false;
+
 
 
     public boolean[] MoveForward() {
