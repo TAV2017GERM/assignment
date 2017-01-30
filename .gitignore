@@ -1,6 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-### Java template
-*.class
 
 # BlueJ files
 *.ctxt
@@ -9,7 +7,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
@@ -89,7 +86,6 @@ xcuserdata/
 .gitignore
 .idea/encodings.xml
 .idea/misc.xml
-.idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
 
