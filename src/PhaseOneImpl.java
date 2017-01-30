@@ -10,7 +10,9 @@ public class PhaseOneImpl implements PhaseOne{
     private boolean isParked = false;
 
 
-
+public static void main(String args[]){
+    System.out.println("haha");
+}
     public boolean[] MoveForward() {
 
         return parkStatus;
