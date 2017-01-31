@@ -1,5 +1,5 @@
 /**
- * Created by Geoffrey on 2017-01-27.
+ * @author by Geoffrey on 2017-01-27.
  */
 public interface PhaseOne {
 
@@ -16,6 +16,12 @@ public interface PhaseOne {
      */
     public boolean[] MoveForward();
 
+    /**
+     * isEmpty: This method queries the two ultrasound sensors at least 5 times and filters the noise in their results
+     * and returns the distance to the nearest object in the right hand side. If one sensor is detected to continuously
+     * return very noisy output, it should be completely disregarded.  You can use averaging or any other statistical
+     * method to filter the noise from the signals received from the ultrasound sensors.
+     */
     public boolean isEmpty();
 
     /**
@@ -44,8 +50,11 @@ public interface PhaseOne {
      */
     public boolean Park();
 
-
+    /**
+     * UnPark: It moves the car forward (and to left) to front of the parking place, if it is parked.
+     */
     public boolean unPark();
+
     /**
      Description:  This method returns the current position of the car in the street as well as its situation
      (whether it is parked or not).
@@ -57,7 +66,6 @@ public interface PhaseOne {
      Test-cases: TODO
 
      */
-
     public boolean[] WhereIs();
     //TODO
 
