@@ -10,7 +10,6 @@ public class PhaseOneImpl implements PhaseOne{
 
 
     public int[] MoveForward() {
-
         return carStatus;
     }
 
