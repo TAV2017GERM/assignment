@@ -11,7 +11,7 @@ public interface PhaseOne {
 
      Pre-condition: 0<= Position < 500; isParked = false;
 
-     Post-condition: 0 <= Position <= 500
+     Post-condition: 0 <= Position <= 500, is_empty status;
 
      Test-cases: TODO
 
@@ -21,8 +21,11 @@ public interface PhaseOne {
     /**
      isEmpty: This method queries the two ultrasound sensors at least 5 times and filters the noise in their results
      and returns the distance to the nearest object in the right hand side. If one sensor is detected to continuously
-     return very noisy output, it should be completely disregarded.  You can use averaging or any other statistical
-     method to filter the noise from the signals received from the ultrasound sensors.
+     return very noisy output, it should be completely disregarded.
+
+     Pre-condition: sensors are on and feeding data
+
+     Post-Condition: int distance to target
      */
     public boolean isEmpty();
 
