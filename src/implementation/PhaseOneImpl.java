@@ -15,7 +15,9 @@ public class PhaseOneImpl implements PhaseOne{
     }
 
     public int[] moveBackward() {
-        carStatus[0] -= 1;
+        if (whereIs() > 0){
+            carStatus[0] -= 1;
+        }
         return carStatus;
     }
 
