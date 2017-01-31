@@ -3,11 +3,11 @@ package implementation;
 /**
  * @author by Geoffrey on 2017-01-27.
  */
-public class PhaseOneImpl implements PhaseOne{
+public class PhaseOneImpl implements PhaseOne {
     private int POSITION = 0;
     private int IS_EMPTY_COUNTER = 0;
 
-    private int[] carStatus = {POSITION , IS_EMPTY_COUNTER};
+    private int[] carStatus = {POSITION, IS_EMPTY_COUNTER};
     private boolean isParked = false;
 
     public int[] moveForward() {
@@ -19,7 +19,7 @@ public class PhaseOneImpl implements PhaseOne{
     }
 
     public int[] moveBackward() {
-        if (whereIs() > 0){     // Added so that it doesn't move past 0
+        if (whereIs() > 0) {     // Added so that it doesn't move past 0
             carStatus[0] -= 1;  // Decrements the position of the car
         }
         return carStatus;       // Return the status of the car
@@ -41,6 +41,6 @@ public class PhaseOneImpl implements PhaseOne{
     public int isEmpty() {
 
 //        return (int) (Math.random() * 2);
-        return  0;      // Returns the integer o
+        return 0;      // Returns the integer o
     }
 }

@@ -65,10 +65,9 @@ public class PhaseOneImplTest {
     @Test
     public void testMoveBackwardOnce() throws Exception {
         int i = phaseOne.whereIs();
-        int j[]=phaseOne.moveBackward();
+        int j[] = phaseOne.moveBackward();
         Assert.assertEquals(i, j[0]);
     }
-
 
     @Test
     public void testMoveBackwardOOB() throws Exception {
@@ -88,8 +87,12 @@ public class PhaseOneImplTest {
      * Method: Park()
      */
     @Test
-    public void testPark() throws Exception {
-//TODO: Test goes here... 
+    public void testParkCarMovedForward() throws Exception {
+
+        int i = phaseOne.whereIs();
+        phaseOne.park();
+        int j = phaseOne.whereIs();
+        Assert.assertTrue(j>i);
     }
 
     /**
