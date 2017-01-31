@@ -65,8 +65,8 @@ public class PhaseOneImplTest {
     @Test
     public void testMoveBackwardOnce() throws Exception {
         int i = phaseOne.whereIs();
-        phaseOne.moveBackward();
-        Assert.assertEquals(0, phaseOne.whereIs());
+        int j[]=phaseOne.moveBackward();
+        Assert.assertEquals(i, j[0]);
     }
 
     @Test
