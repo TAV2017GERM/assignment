@@ -26,7 +26,7 @@ public class PhaseOneImpl implements PhaseOne {
     }
 
     public void park() {
-
+        moveForward();
     }
 
     public boolean unPark() {
