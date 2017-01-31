@@ -1,3 +1,6 @@
+import implementation.PhaseOne;
+import implementation.PhaseOneImpl;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
@@ -66,7 +69,8 @@ public void testUnPark() throws Exception {
 */ 
 @Test
 public void testWhereIs() throws Exception {
-//TODO: Test goes here... 
+    PhaseOneImpl phaseOne = new PhaseOneImpl();
+    Assert.assertEquals(phaseOne.WhereIs(), 0);
 } 
 
 /** 
@@ -76,7 +80,7 @@ public void testWhereIs() throws Exception {
 */ 
 @Test
 public void testIsEmpty() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
 } 
 
 

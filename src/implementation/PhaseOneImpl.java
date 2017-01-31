@@ -8,7 +8,6 @@ public class PhaseOneImpl implements PhaseOne{
     private boolean isParked = false;
 
 
-
     public int[] MoveForward() {
         return carStatus;
     }
@@ -26,10 +25,9 @@ public class PhaseOneImpl implements PhaseOne{
 
         return isParked;
     }
-
     public int WhereIs() {
-
-        return carStatus[0];
+        //return carStatus[0];
+        return 0;
     }
 
     public boolean isEmpty() {
