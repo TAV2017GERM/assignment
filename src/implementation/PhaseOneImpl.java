@@ -38,7 +38,7 @@ public class PhaseOneImpl implements PhaseOne{
     }
 
     public int isEmpty() {
-    int i = 0;
-        return i;
+
+        return 1;
     }
 }
