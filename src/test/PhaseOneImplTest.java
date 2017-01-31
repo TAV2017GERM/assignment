@@ -56,7 +56,7 @@ public class PhaseOneImplTest {
     public void testMoveForwardParkStatus() throws Exception {
        phaseOne.moveForward();
        int i[] = phaseOne.moveForward();
-        Assert.assertEquals(0, i[1]);
+        Assert.assertEquals(1, i[1]);
     }
 
     /**
@@ -106,8 +106,8 @@ public class PhaseOneImplTest {
      */
     @Test
     public void testIsEmpty() throws Exception {
-
         Assert.assertThat(phaseOne.isEmpty(),instanceOf(Integer.class));
+//        Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
 
     }
 
