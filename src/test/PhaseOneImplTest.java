@@ -70,7 +70,7 @@ public void testUnPark() throws Exception {
 @Test
 public void testWhereIs() throws Exception {
     PhaseOneImpl phaseOne = new PhaseOneImpl();
-    Assert.assertEquals(phaseOne.WhereIs(), 0);
+    Assert.assertEquals(phaseOne.whereIs(), 0);
 } 
 
 /** 
