@@ -29,7 +29,7 @@ public class PhaseOneImplTest {
      * Method: MoveForward()
      */
     @Test
-    public void testMoveForward() throws Exception {
+    public void testMoveForwardOnce() throws Exception {
         int i = phaseOne.whereIs();
         phaseOne.moveForward();
         Assert.assertEquals(phaseOne.whereIs(), i + 1);
@@ -39,8 +39,10 @@ public class PhaseOneImplTest {
      * Method: MoveBackward()
      */
     @Test
-    public void testMoveBackward() throws Exception {
-//TODO: Test goes here... 
+    public void testMoveBackwardOnce() throws Exception {
+        int i = phaseOne.whereIs();
+        phaseOne.moveForward();
+        Assert.assertEquals(phaseOne.whereIs(), i - 1);
     }
 
     /**
