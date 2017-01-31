@@ -7,7 +7,6 @@ public class PhaseOneImpl implements PhaseOne{
     private int[] carStatus = {0 , 0};
     private boolean isParked = false;
 
-
     public int[] moveForward() {
 //        if (whereIs() < 501) {
             carStatus[0] += 1;
