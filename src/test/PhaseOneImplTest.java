@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
+
 /**
  * implementation.PhaseOneImpl Tester.
  *
@@ -93,8 +95,9 @@ public class PhaseOneImplTest {
      */
     @Test
     public void testIsEmpty() throws Exception {
-//TODO: Test goes here...
+        //Assert.assertEquals(phaseOne.isEmpty(), false);
+       // Assert.assertEquals(instanceOf(int.class),phaseOne.isEmpty());
+        Assert.assertEquals(1,phaseOne.isEmpty());
     }
-
 
 } 

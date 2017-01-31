@@ -34,8 +34,8 @@ public class PhaseOneImpl implements PhaseOne{
         return carStatus[0];
     }
 
-    public boolean isEmpty() {
-
-        return false;
+    public int isEmpty() {
+    int i = 0;
+        return i;
     }
 }

@@ -27,7 +27,7 @@ public interface PhaseOne {
 
      Post-Condition: int distance to target
      */
-    public boolean isEmpty();
+    public int isEmpty();
 
     /**
      Description: Method that behaves as MoveForward, with the difference that it moves the car 1 meter backwards.
