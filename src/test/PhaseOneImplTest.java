@@ -3,7 +3,7 @@ import org.junit.Before;
 import org.junit.After; 
 
 /** 
-* PhaseOneImpl Tester. 
+* implementation.PhaseOneImpl Tester.
 * 
 * @author GeoffreyC
 * @since <pre>Jan 30, 2017</pre> 
