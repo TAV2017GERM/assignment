@@ -14,7 +14,7 @@ public class PhaseOneImpl implements PhaseOne {
         if (whereIs() < 500) {  // Added so that it doesn't move past 500
             carStatus[0] += 1;  // Increments the position of the car
             if(isEmpty()==1){
-                IS_EMPTY_COUNTER++;
+                carStatus[1]++;
             }
         }
         return carStatus;       // Return the status of the car
