@@ -98,9 +98,9 @@ public class PhaseOneImplTest {
      */
     @Test
     public void testIsEmpty() throws Exception {
-        //Assert.assertEquals(phaseOne.isEmpty(), false);
+
         Assert.assertThat(phaseOne.isEmpty(),instanceOf(Integer.class));
-        //Assert.assertEquals(1, phaseOne.isEmpty());
+
 
     }
 
