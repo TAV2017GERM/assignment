@@ -32,7 +32,21 @@ public class PhaseOneImplTest {
     public void testMoveForwardOnce() throws Exception {
         int i = phaseOne.whereIs();
         phaseOne.moveForward();
-        Assert.assertEquals(phaseOne.whereIs(), i + 1);
+        Assert.assertEquals(i + 1, phaseOne.whereIs());
+    }
+
+    /**
+     * Method MoveForward()
+     * Move 500 times,
+     * @throws Exception
+     */
+    @Test
+    public void testMoveForwardOOB() throws Exception {
+        int i = phaseOne.whereIs();
+        for(int j = 0; j<501; j++){
+            phaseOne.moveForward();
+        }
+        Assert.assertEquals(500,phaseOne.whereIs());
     }
 
     /**
@@ -66,7 +80,7 @@ public class PhaseOneImplTest {
      */
     @Test
     public void testWhereIs() throws Exception {
-        Assert.assertEquals(phaseOne.whereIs(), 0);
+        Assert.assertEquals(0, phaseOne.whereIs());
     }
 
     /**
