@@ -10,6 +10,9 @@ public class PhaseOneImpl implements PhaseOne{
 
 
     public int[] moveForward() {
+//        if (whereIs() < 501) {
+//            carStatus[0] += 1;
+//        }
         return carStatus;
     }
 
