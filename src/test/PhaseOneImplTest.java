@@ -52,6 +52,13 @@ public class PhaseOneImplTest {
         Assert.assertEquals(500, phaseOne.whereIs());
     }
 
+    @Test
+    public void testMoveForwardParkStatus() throws Exception {
+       phaseOne.moveForward();
+       int i[] = phaseOne.moveForward();
+        Assert.assertEquals(0, i[1]);
+    }
+
     /**
      * Method: MoveBackward()
      */
@@ -91,6 +98,7 @@ public class PhaseOneImplTest {
     @Test
     public void testWhereIs() throws Exception {
         Assert.assertEquals(0, phaseOne.whereIs());
+        Assert.assertThat(phaseOne.whereIs(),instanceOf(Integer.class));
     }
 
     /**
@@ -100,7 +108,6 @@ public class PhaseOneImplTest {
     public void testIsEmpty() throws Exception {
 
         Assert.assertThat(phaseOne.isEmpty(),instanceOf(Integer.class));
-
 
     }
 
