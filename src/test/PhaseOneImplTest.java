@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 /**
  * implementation.PhaseOneImpl Tester.
  *
@@ -97,8 +99,8 @@ public class PhaseOneImplTest {
     @Test
     public void testIsEmpty() throws Exception {
         //Assert.assertEquals(phaseOne.isEmpty(), false);
-        //Assert.assertEquals(instanceOf(Number.class),phaseOne.isEmpty());
-        Assert.assertEquals(1, phaseOne.isEmpty());
+        Assert.assertThat(phaseOne.isEmpty(),instanceOf(Integer.class));
+        //Assert.assertEquals(1, phaseOne.isEmpty());
 
     }
 
