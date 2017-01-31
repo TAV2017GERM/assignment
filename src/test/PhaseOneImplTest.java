@@ -54,9 +54,9 @@ public class PhaseOneImplTest {
 
     @Test
     public void testMoveForwardParkStatus() throws Exception {
-       phaseOne.moveForward();
-       int i[] = phaseOne.moveForward();
-        Assert.assertEquals(1, i[1]);
+        phaseOne.moveForward();
+        int i[] = phaseOne.moveForward();
+        Assert.assertEquals(phaseOne.isEmpty(), i[1]);
     }
 
     /**
@@ -98,7 +98,7 @@ public class PhaseOneImplTest {
     @Test
     public void testWhereIs() throws Exception {
         Assert.assertEquals(0, phaseOne.whereIs());
-        Assert.assertThat(phaseOne.whereIs(),instanceOf(Integer.class));
+        Assert.assertThat(phaseOne.whereIs(), instanceOf(Integer.class));
     }
 
     /**
@@ -106,8 +106,15 @@ public class PhaseOneImplTest {
      */
     @Test
     public void testIsEmpty() throws Exception {
-        Assert.assertThat(phaseOne.isEmpty(),instanceOf(Integer.class));
-//        Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
+        Assert.assertThat(phaseOne.isEmpty(), instanceOf(Integer.class));
+        Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
+
+    }
+
+    @Test
+    public void testIsEmptyMoveForwardOnce() throws Exception {
+        phaseOne.isEmpty();
+        Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
 
     }
 
