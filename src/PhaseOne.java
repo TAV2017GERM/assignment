@@ -3,7 +3,17 @@
  */
 public interface PhaseOne {
 
+    /**
+     Description: Moves the car 1 meter forward. Returns the current position of the car and the status of the status of
+     the detected parking places up till now.
 
+     Pre-condition: 0<= Position < 500; isParked = false;
+
+     Post-condition: 0 <= Position <= 500
+
+     Test-cases: TODO
+
+     */
     public boolean[] MoveForward();
 
     public boolean isEmpty();
@@ -33,6 +43,7 @@ public interface PhaseOne {
 
      */
     public boolean Park();
+
 
     public boolean unPark();
     /**
