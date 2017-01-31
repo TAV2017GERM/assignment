@@ -30,8 +30,7 @@ public class PhaseOneImpl implements PhaseOne{
     }
 
     public int whereIs() {
-//        return carStatus[0];
-        return 0;
+        return carStatus[0];
     }
 
     public boolean isEmpty() {
