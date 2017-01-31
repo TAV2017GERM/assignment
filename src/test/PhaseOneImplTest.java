@@ -51,6 +51,15 @@ public class PhaseOneImplTest {
     }
 
     @Test
+    public void testMoveForward500carStatus() throws Exception {
+
+        for (int j = 0; j < 501; j++) {
+            phaseOne.moveForward();
+        }
+        Assert.assertNotEquals(0, phaseOne.carStatus[1]);
+    }
+
+    @Test
     public void testMoveForwardParkStatus() throws Exception {
         phaseOne.moveForward();
         int i[] = phaseOne.moveForward();

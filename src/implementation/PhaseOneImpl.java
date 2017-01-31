@@ -5,7 +5,7 @@ package implementation;
  */
 public class PhaseOneImpl implements PhaseOne {
     private int POSITION = 0;
-    private int IS_EMPTY_COUNTER;
+    private int IS_EMPTY_COUNTER = 0;
 
     public int[] carStatus = {POSITION, IS_EMPTY_COUNTER};
     public boolean isParked = false;
@@ -13,7 +13,9 @@ public class PhaseOneImpl implements PhaseOne {
     public int[] moveForward() {
         if (whereIs() < 500) {  // Added so that it doesn't move past 500
             carStatus[0] += 1;  // Increments the position of the car
-
+            if(isEmpty()==1){
+                IS_EMPTY_COUNTER++;
+            }
         }
         return carStatus;       // Return the status of the car
     }
@@ -50,6 +52,12 @@ public class PhaseOneImpl implements PhaseOne {
     public int isEmpty() {
 
 //        return (int) (Math.random() * 2);
-        return 0;      // Returns the integer o
+       // return 0;      // Returns the integer o
+        int i = whereIs();
+        if(30>i && i<36){
+            return 1;
+        }else {
+            return 0;
+        }
     }
 }
