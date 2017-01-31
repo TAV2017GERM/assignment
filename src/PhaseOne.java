@@ -17,10 +17,10 @@ public interface PhaseOne {
     public boolean[] MoveForward();
 
     /**
-     * isEmpty: This method queries the two ultrasound sensors at least 5 times and filters the noise in their results
-     * and returns the distance to the nearest object in the right hand side. If one sensor is detected to continuously
-     * return very noisy output, it should be completely disregarded.  You can use averaging or any other statistical
-     * method to filter the noise from the signals received from the ultrasound sensors.
+     isEmpty: This method queries the two ultrasound sensors at least 5 times and filters the noise in their results
+     and returns the distance to the nearest object in the right hand side. If one sensor is detected to continuously
+     return very noisy output, it should be completely disregarded.  You can use averaging or any other statistical
+     method to filter the noise from the signals received from the ultrasound sensors.
      */
     public boolean isEmpty();
 
@@ -51,7 +51,14 @@ public interface PhaseOne {
     public boolean Park();
 
     /**
-     * UnPark: It moves the car forward (and to left) to front of the parking place, if it is parked.
+     UnPark: It moves the car forward (and to left) to front of the parking place, if it is parked.
+
+     Pre-condition: boolean isParked = true;
+
+     Post-condition isParked = false, canPark = true;
+
+     Test-cases: TODO
+
      */
     public boolean unPark();
 
