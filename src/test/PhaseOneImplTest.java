@@ -40,8 +40,6 @@ public class PhaseOneImplTest {
     /**
      * Method MoveForward()
      * Move 500 times,
-     *
-     * @throws Exception
      */
     @Test
     public void testMoveForwardOOB() throws Exception {
@@ -58,6 +56,7 @@ public class PhaseOneImplTest {
         int i[] = phaseOne.moveForward();
         Assert.assertEquals(phaseOne.isEmpty(), i[1]);
     }
+
 
     /**
      * Method: MoveBackward()
@@ -88,11 +87,21 @@ public class PhaseOneImplTest {
      */
     @Test
     public void testParkCarMovedForward() throws Exception {
-
         int i = phaseOne.whereIs();
         phaseOne.park();
         int j = phaseOne.whereIs();
-        Assert.assertTrue(j>i);
+        Assert.assertTrue(j > i);
+    }
+
+
+    @Test
+    public void testParkMoveFindParking() throws Exception {
+
+
+        phaseOne.park();
+        Assert.assertEquals(phaseOne.whereIs(), phaseOne.carStatus[0]);
+        Assert.assertEquals(true, phaseOne.isParked);
+
     }
 
     /**
@@ -117,6 +126,7 @@ public class PhaseOneImplTest {
      */
     @Test
     public void testIsEmpty() throws Exception {
+
         Assert.assertThat(phaseOne.isEmpty(), instanceOf(Integer.class));
         Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
 
@@ -124,7 +134,7 @@ public class PhaseOneImplTest {
 
     @Test
     public void testIsEmptyMoveForwardOnce() throws Exception {
-        phaseOne.isEmpty();
+
         Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
 
     }

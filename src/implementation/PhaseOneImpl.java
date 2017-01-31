@@ -5,10 +5,10 @@ package implementation;
  */
 public class PhaseOneImpl implements PhaseOne {
     private int POSITION = 0;
-    private int IS_EMPTY_COUNTER = 0;
+    private int IS_EMPTY_COUNTER;
 
-    private int[] carStatus = {POSITION, IS_EMPTY_COUNTER};
-    private boolean isParked = false;
+    public int[] carStatus = {POSITION, IS_EMPTY_COUNTER};
+    public boolean isParked = false;
 
     public int[] moveForward() {
         if (whereIs() < 500) {  // Added so that it doesn't move past 500
@@ -26,7 +26,16 @@ public class PhaseOneImpl implements PhaseOne {
     }
 
     public void park() {
-        moveForward();
+        int i= 0;
+        do {
+            moveForward();
+            if(IS_EMPTY_COUNTER==5){
+                isParked = true;
+                carStatus[1] = 1;
+            }
+            i++;
+        }while(i<500);
+
     }
 
     public boolean unPark() {
