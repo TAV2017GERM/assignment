@@ -9,16 +9,16 @@ public class PhaseOneImpl implements PhaseOne{
 
 
 
-    public int[] MoveForward() {
+    public int[] moveForward() {
         return carStatus;
     }
 
-    public int[] MoveBackward() {
+    public int[] moveBackward() {
 
         return carStatus;
     }
 
-    public void Park() {
+    public void park() {
 
     }
 
@@ -27,7 +27,7 @@ public class PhaseOneImpl implements PhaseOne{
         return isParked;
     }
 
-    public int WhereIs() {
+    public int whereIs() {
 
         return carStatus[0];
     }
