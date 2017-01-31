@@ -12,17 +12,17 @@ public class PhaseOneImpl implements PhaseOne{
 
     public int[] moveForward() {
         if (whereIs() < 499) {  // Added so that it doesn't move past 500
-            carStatus[0] += 1;  // Incremets the position of the car
+            carStatus[0] += 1;  // Increments the position of the car
 
         }
-        return carStatus;
+        return carStatus;       // Return the status of the car
     }
 
     public int[] moveBackward() {
-        if (whereIs() > 0){
-            carStatus[0] -= 1;
+        if (whereIs() > 0){     // Added so that it doesn't move past 0
+            carStatus[0] -= 1;  // Decrements the position of the car
         }
-        return carStatus;
+        return carStatus;       // Return the status of the car
     }
 
     public void park() {
@@ -31,16 +31,16 @@ public class PhaseOneImpl implements PhaseOne{
 
     public boolean unPark() {
 
-        return isParked;
+        return isParked;        // Return the parking status
     }
 
     public int whereIs() {
-        return carStatus[0];
+        return carStatus[0];    // Return the position of the car
     }
 
     public int isEmpty() {
 
 //        return (int) (Math.random() * 2);
-        return  0;
+        return  0;      // Returns the integer o
     }
 }
