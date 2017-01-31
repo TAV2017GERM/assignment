@@ -69,11 +69,19 @@ public class PhaseOneImplTest {
         Assert.assertEquals(i, j[0]);
     }
 
+
     @Test
     public void testMoveBackwardOOB() throws Exception {
         int i = phaseOne.whereIs();
         phaseOne.moveBackward();
         Assert.assertEquals(0, phaseOne.whereIs());
+    }
+
+    @Test
+    public void testMoveBackwardParkStatus() throws Exception {
+        phaseOne.moveBackward();
+        int i[] = phaseOne.moveBackward();
+        Assert.assertEquals(phaseOne.isEmpty(), i[1]);
     }
 
     /**

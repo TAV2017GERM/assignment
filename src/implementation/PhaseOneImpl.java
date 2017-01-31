@@ -19,7 +19,7 @@ public class PhaseOneImpl implements PhaseOne{
     }
 
     public int[] moveBackward() {
-        if (whereIs() > 1){     // Added so that it doesn't move past 0
+        if (whereIs() > 0){     // Added so that it doesn't move past 0
             carStatus[0] -= 1;  // Decrements the position of the car
         }
         return carStatus;       // Return the status of the car
