@@ -14,8 +14,11 @@ import org.junit.After;
 */ 
 public class PhaseOneImplTest { 
 
+    PhaseOneImpl phaseOne;
+
 @Before
-public void before() throws Exception { 
+public void before() throws Exception {
+    phaseOne = new PhaseOneImpl();
 } 
 
 @After
@@ -29,7 +32,8 @@ public void after() throws Exception {
 */ 
 @Test
 public void testMoveForward() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+
 } 
 
 /** 
@@ -69,7 +73,6 @@ public void testUnPark() throws Exception {
 */ 
 @Test
 public void testWhereIs() throws Exception {
-    PhaseOneImpl phaseOne = new PhaseOneImpl();
     Assert.assertEquals(phaseOne.whereIs(), 0);
 } 
 
