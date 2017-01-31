@@ -19,7 +19,7 @@ public interface PhaseOne {
     public boolean isEmpty();
 
     /**
-     Description: Method that behaves as MoveFoward, wth the difference that it moves the car 1 meter backwards.
+     Description: Method that behaves as MoveForward, with the difference that it moves the car 1 meter backwards.
 
      Pre-condition:int: Position != 0; isParked = false;
 
