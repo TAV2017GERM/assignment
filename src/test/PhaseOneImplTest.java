@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
-
 /**
  * implementation.PhaseOneImpl Tester.
  *
@@ -40,15 +38,16 @@ public class PhaseOneImplTest {
     /**
      * Method MoveForward()
      * Move 500 times,
+     *
      * @throws Exception
      */
     @Test
     public void testMoveForwardOOB() throws Exception {
         int i = phaseOne.whereIs();
-        for(int j = 0; j<501; j++){
+        for (int j = 0; j < 501; j++) {
             phaseOne.moveForward();
         }
-        Assert.assertEquals(500,phaseOne.whereIs());
+        Assert.assertEquals(500, phaseOne.whereIs());
     }
 
     /**
@@ -56,16 +55,18 @@ public class PhaseOneImplTest {
      */
     @Test
     public void testMoveBackwardOnce() throws Exception {
-        int i = phaseOne.whereIs();
+
         phaseOne.moveBackward();
-        Assert.assertEquals(i-1, phaseOne.whereIs());
+        Assert.assertEquals(0, phaseOne.whereIs());
     }
+
     @Test
     public void testMoveBackwardOOB() throws Exception {
         int i = phaseOne.whereIs();
         phaseOne.moveBackward();
         Assert.assertEquals(0, phaseOne.whereIs());
     }
+
     /**
      * Method: Park()
      */
@@ -96,8 +97,8 @@ public class PhaseOneImplTest {
     @Test
     public void testIsEmpty() throws Exception {
         //Assert.assertEquals(phaseOne.isEmpty(), false);
-       // Assert.assertEquals(instanceOf(int.class),phaseOne.isEmpty());
-        Assert.assertEquals(1,phaseOne.isEmpty());
+        //Assert.assertEquals(instanceOf(Number.class),phaseOne.isEmpty());
+        Assert.assertEquals(1, phaseOne.isEmpty());
 
     }
 
