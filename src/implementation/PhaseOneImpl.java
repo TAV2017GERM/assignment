@@ -1,29 +1,26 @@
 package implementation;
 
 /**
- * Created by Geoffrey on 2017-01-27.
+ * @author by Geoffrey on 2017-01-27.
  */
 public class PhaseOneImpl implements PhaseOne{
-    private boolean isEmpty = false;
-    private boolean parkStatus[] = new boolean[500];
-    private boolean canPark = false;
+    private int[] carStatus = {0 , 0};
     private boolean isParked = false;
 
 
 
-    public boolean[] MoveForward() {
+    public int[] MoveForward() {
 
-        return parkStatus;
+        return carStatus;
     }
 
-    public boolean[] MoveBackward() {
+    public int[] MoveBackward() {
 
-        return parkStatus;
+        return carStatus;
     }
 
-    public boolean Park() {
+    public void Park() {
 
-        return isParked;
     }
 
     public boolean unPark() {
@@ -31,13 +28,13 @@ public class PhaseOneImpl implements PhaseOne{
         return isParked;
     }
 
-    public boolean[] WhereIs() {
+    public int WhereIs() {
 
-        return parkStatus;
+        return carStatus[0];
     }
 
     public boolean isEmpty() {
 
-        return isEmpty;
+        return false;
     }
 }

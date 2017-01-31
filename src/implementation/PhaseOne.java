@@ -16,7 +16,7 @@ public interface PhaseOne {
      Test-cases: TODO
 
      */
-    public boolean[] MoveForward();
+    public int[] MoveForward();
 
     /**
      isEmpty: This method queries the two ultrasound sensors at least 5 times and filters the noise in their results
@@ -39,7 +39,7 @@ public interface PhaseOne {
      Test-cases: TODO
 
      */
-    public boolean[] MoveBackward();
+    public int[] MoveBackward();
 
     /**
      Description:  It moves the car to the beginning of the current 5 meter free stretch of parking place,
@@ -53,7 +53,7 @@ public interface PhaseOne {
      Test-cases: TODO
 
      */
-    public boolean Park();
+    public void Park();
 
     /**
      UnPark: It moves the car forward (and to left) to front of the parking place, if it is parked.
@@ -79,7 +79,7 @@ public interface PhaseOne {
      Test-cases: TODO
 
      */
-    public boolean[] WhereIs();
+    public int WhereIs();
     //TODO today
 
 }
