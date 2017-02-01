@@ -134,6 +134,19 @@ public class PhaseOneImplTest {
         Assert.assertEquals(phaseOne.whereIs(), phaseOne.carStatus[0]);
 
     }
+    @Test
+    public void testParkAt05() throws Exception {
+
+        for(int i = 0; i<501;i++){
+            phaseOne.moveForward();
+        }
+        for(int i = 500; i !=35; i--){
+            phaseOne.moveBackward();
+        }
+        phaseOne.park();
+        Assert.assertEquals(true, phaseOne.isParked);
+
+    }
 
     /**
      * Method: unPark()
@@ -209,9 +222,17 @@ public class PhaseOneImplTest {
     @Test
     public void testFinalTest() {
         phaseOne.park();
+        Assert.assertEquals(35, phaseOne.carStatus[0]);
+        Assert.assertEquals(true, phaseOne.isParked);
         phaseOne.unPark();
+        Assert.assertEquals(36, phaseOne.carStatus[0]);
+        Assert.assertEquals(false, phaseOne.isParked);
         phaseOne.park();
-        Assert.assertEquals(150, phaseOne.carStatus[0]);
+        Assert.assertEquals(500, phaseOne.carStatus[0]);
+        Assert.assertEquals(true, phaseOne.isParked);
+        phaseOne.unPark();
+        Assert.assertEquals(500, phaseOne.carStatus[0]);
+        Assert.assertEquals(false, phaseOne.isParked);
     }
 
 } 

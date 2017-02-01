@@ -65,7 +65,7 @@ public interface PhaseOne {
      Test-cases: TODO
 
      */
-    public boolean unPark();
+    public void unPark();
 
 
     /**
