@@ -137,7 +137,9 @@ public class PhaseOneImplTest {
      */
     @Test
     public void testUnPark() throws Exception {
-//TODO: Test goes here... 
+        phaseOne.park();
+        phaseOne.unPark();
+        Assert.assertEquals(false,phaseOne.isParked);
     }
 
     /**
