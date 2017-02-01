@@ -64,12 +64,13 @@ public class PhaseOneImplTest {
         int i[] = phaseOne.moveForward();
         Assert.assertEquals(phaseOne.isEmpty(), i[1]);
     }
+
     @Test
     public void testMoveForwardAfterParked() throws Exception {
-     phaseOne.park();
-     int i = phaseOne.carStatus[0];
-     phaseOne.moveForward();
-        Assert.assertEquals(i,phaseOne.whereIs());
+        phaseOne.park();
+        int i = phaseOne.carStatus[0];
+        phaseOne.moveForward();
+        Assert.assertEquals(i, phaseOne.whereIs());
     }
 
     /**
@@ -92,14 +93,15 @@ public class PhaseOneImplTest {
     @Test
     public void testMoveBackwardParkStatus() throws Exception {
         int i[] = phaseOne.moveBackward();
-        Assert.assertEquals(i[1],phaseOne.isEmpty());
+        Assert.assertEquals(i[1], phaseOne.isEmpty());
     }
+
     @Test
     public void testMoveBackwardAfterParked() throws Exception {
         phaseOne.park();
         int i = phaseOne.carStatus[0];
         phaseOne.moveBackward();
-        Assert.assertEquals(i,phaseOne.whereIs());
+        Assert.assertEquals(i, phaseOne.whereIs());
 
     }
 
@@ -123,6 +125,7 @@ public class PhaseOneImplTest {
         Assert.assertEquals(true, phaseOne.isParked);
 
     }
+
     @Test
     public void testParkStopAtParking() throws Exception {
 
@@ -139,15 +142,16 @@ public class PhaseOneImplTest {
     public void testUnPark() throws Exception {
         phaseOne.park();
         phaseOne.unPark();
-        Assert.assertEquals(false,phaseOne.isParked);
+        Assert.assertEquals(false, phaseOne.isParked);
     }
+
     @Test
     public void testUnParkMoveForward() throws Exception {
         phaseOne.park();
         phaseOne.unPark();
         int i = phaseOne.whereIs();
         phaseOne.moveForward();
-        Assert.assertNotEquals(i,phaseOne.carStatus[0]);
+        Assert.assertNotEquals(i, phaseOne.carStatus[0]);
     }
 
     @Test
@@ -156,9 +160,22 @@ public class PhaseOneImplTest {
         phaseOne.unPark();
         int i = phaseOne.whereIs();
         phaseOne.moveBackward();
-        Assert.assertNotEquals(i,phaseOne.carStatus[0]);
+        Assert.assertNotEquals(i, phaseOne.carStatus[0]);
     }
 
+    @Test
+    public void testUnParkAt500() {
+        phaseOne.park();
+        phaseOne.unPark();
+        Assert.assertEquals(500,phaseOne.carStatus[0]);
+    }
+
+    @Test
+    public void testUnParkAt35() {
+        phaseOne.park();
+        phaseOne.unPark();
+        Assert.assertEquals(36,phaseOne.carStatus[0]);
+    }
     /**
      * Method: Wherels()
      */
@@ -184,6 +201,15 @@ public class PhaseOneImplTest {
 
         Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
 
+    }
+
+
+    @Test
+    public void testFinalTest() {
+        phaseOne.park();
+        phaseOne.unPark();
+        phaseOne.park();
+        Assert.assertEquals(150, phaseOne.carStatus[0]);
     }
 
 } 
