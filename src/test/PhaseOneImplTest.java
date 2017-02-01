@@ -167,6 +167,7 @@ public class PhaseOneImplTest {
     public void testUnParkAt500() {
         phaseOne.park();
         phaseOne.unPark();
+        phaseOne.park();
         Assert.assertEquals(500,phaseOne.carStatus[0]);
     }
 
