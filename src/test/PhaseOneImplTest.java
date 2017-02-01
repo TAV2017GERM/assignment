@@ -64,7 +64,13 @@ public class PhaseOneImplTest {
         int i[] = phaseOne.moveForward();
         Assert.assertEquals(phaseOne.isEmpty(), i[1]);
     }
-
+    @Test
+    public void testMoveForwardAfterParked() throws Exception {
+     phaseOne.park();
+     int i = phaseOne.carStatus[0];
+     phaseOne.moveForward();
+        Assert.assertEquals(i,phaseOne.whereIs());
+    }
 
     /**
      * Method: MoveBackward()
@@ -114,7 +120,7 @@ public class PhaseOneImplTest {
 
         phaseOne.park();
         Assert.assertEquals(phaseOne.whereIs(), phaseOne.carStatus[0]);
-        Assert.assertEquals(35, phaseOne.carStatus[0]);
+        Assert.assertEquals(phaseOne.whereIs(), phaseOne.carStatus[0]);
 
     }
 
