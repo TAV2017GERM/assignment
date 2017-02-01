@@ -1,7 +1,5 @@
 package implementation;
 
-import java.util.Stack;
-
 /**
  * @author by Group4 on 2017-01-27.
  */
@@ -12,11 +10,11 @@ public class PhaseOneImpl implements PhaseOne {
     public int[] carStatus = {POSITION, IS_EMPTY_COUNTER};
     private int[] parkingPlaces = new int[501];
     public boolean isParked = false;
-    public boolean drivingForward = false;
+    private boolean drivingForward = false;
 
     public int[] moveForward() {
         if (whereIs() < 500 && !isParked) {  // Added so that it doesn't move past 500
-            if (!drivingForward){
+            if (!drivingForward) {
                 drivingForward = true;
                 if (carStatus[1] > 0) carStatus[1] = 1;
                 else carStatus[1] = 0;
@@ -41,7 +39,7 @@ public class PhaseOneImpl implements PhaseOne {
 
     public int[] moveBackward() {
         if (whereIs() > 1 && !isParked) {     // Added so that it doesn't move past 0
-            if (drivingForward){
+            if (drivingForward) {
                 drivingForward = false;
                 if (carStatus[1] > 0) carStatus[1] = 1;
                 else carStatus[1] = 0;
@@ -66,14 +64,14 @@ public class PhaseOneImpl implements PhaseOne {
 
     public void park() {
         int i = whereIs();                       // Initialize basic counter
-        if (!(parkingPlaces[whereIs()] == 0) && whereIs() != parkingPlaces[whereIs()]){
-            if (whereIs() < parkingPlaces[whereIs()]){
-                while (whereIs() != parkingPlaces[whereIs()] && !isParked){
+        if (!(parkingPlaces[whereIs()] == 0) && whereIs() != parkingPlaces[whereIs()]) {
+            if (whereIs() < parkingPlaces[whereIs()]) {
+                while (whereIs() != parkingPlaces[whereIs()] && !isParked) {
                     moveForward();
                 }
                 if (whereIs() == parkingPlaces[whereIs()]) isParked = true;
-            }else {
-                while (whereIs() != parkingPlaces[whereIs()] && !isParked){
+            } else {
+                while (whereIs() != parkingPlaces[whereIs()] && !isParked) {
                     moveBackward();
                 }
                 if (whereIs() == parkingPlaces[whereIs()]) isParked = true;
@@ -96,7 +94,7 @@ public class PhaseOneImpl implements PhaseOne {
     public void unPark() {
         if (isParked) {
             isParked = false;
-            if (whereIs() != 500) carStatus[0] += 1;
+            if (whereIs() != 500) moveForward();
         }
     }
 
