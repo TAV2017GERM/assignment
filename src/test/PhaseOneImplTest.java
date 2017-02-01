@@ -61,7 +61,6 @@ public class PhaseOneImplTest {
 
     @Test
     public void testMoveForwardParkStatus() throws Exception {
-        phaseOne.moveForward();
         int i[] = phaseOne.moveForward();
         Assert.assertEquals(phaseOne.isEmpty(), i[1]);
     }
@@ -86,7 +85,6 @@ public class PhaseOneImplTest {
 
     @Test
     public void testMoveBackwardParkStatus() throws Exception {
-        phaseOne.moveBackward();
         int i[] = phaseOne.moveBackward();
         Assert.assertEquals(phaseOne.isEmpty(), i[1]);
     }
