@@ -74,6 +74,15 @@ public class PhaseOneImplTest {
         Assert.assertEquals(1, phaseOne.whereIs());
     }
 
+    /**
+     * Method: isEmpty()
+     */
+    @Test
+    public void testIsEmpty() throws Exception {
+        Assert.assertThat(phaseOne.isEmpty(), instanceOf(Integer.class));
+        Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
+    }
+
     @Test
     public void testMoveForward500carStatus() throws Exception {
 
@@ -198,17 +207,6 @@ public class PhaseOneImplTest {
         phaseOne.park();
         phaseOne.unPark();
         Assert.assertEquals(36, phaseOne.carStatus[0]);
-    }
-
-    /**
-     * Method: isEmpty()
-     */
-    @Test
-    public void testIsEmpty() throws Exception {
-
-        Assert.assertThat(phaseOne.isEmpty(), instanceOf(Integer.class));
-        Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
-
     }
 
     @Test
