@@ -1,4 +1,3 @@
-
 import implementation.PhaseOneImpl;
 import org.junit.After;
 import org.junit.Assert;
@@ -134,16 +133,18 @@ public class PhaseOneImplTest {
         Assert.assertEquals(phaseOne.whereIs(), phaseOne.carStatus[0]);
 
     }
+
     @Test
     public void testParkAfterMoveBackward() throws Exception {
 
-        for(int i = 0; i<501;i++){
+        for (int i = 0; i < 501; i++) {
             phaseOne.moveForward();
         }
-        for(int i = 500; i !=35; i--){
+        for (int i = 500; i != 35; i--) {
             phaseOne.moveBackward();
         }
         phaseOne.park();
+        Assert.assertEquals(35, phaseOne.carStatus[0]);
         Assert.assertEquals(true, phaseOne.isParked);
 
     }
@@ -181,14 +182,14 @@ public class PhaseOneImplTest {
         phaseOne.park();
         phaseOne.unPark();
         phaseOne.park();
-        Assert.assertEquals(500,phaseOne.carStatus[0]);
+        Assert.assertEquals(500, phaseOne.carStatus[0]);
     }
 
     @Test
     public void testUnParkAt35() {
         phaseOne.park();
         phaseOne.unPark();
-        Assert.assertEquals(36,phaseOne.carStatus[0]);
+        Assert.assertEquals(36, phaseOne.carStatus[0]);
     }
 
     /**
