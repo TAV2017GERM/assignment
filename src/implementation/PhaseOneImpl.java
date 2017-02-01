@@ -1,5 +1,7 @@
 package implementation;
 
+import java.util.Stack;
+
 /**
  * @author by Group4 on 2017-01-27.
  */
@@ -8,6 +10,7 @@ public class PhaseOneImpl implements PhaseOne {
     private int IS_EMPTY_COUNTER = 0;
 
     public int[] carStatus = {POSITION, IS_EMPTY_COUNTER};
+    private Stack<Integer> parkingPlaces = new Stack<>();
     public boolean isParked = false;
 
     public int[] moveForward() {
@@ -15,6 +18,7 @@ public class PhaseOneImpl implements PhaseOne {
             carStatus[0] += 1;  // Increments the position of the car
             if (isEmpty() == 1) {
                 carStatus[1]++;
+                if (carStatus[1] == 5) parkingPlaces.push(whereIs());
             }
         }
         return carStatus;       // Return the status of the car
@@ -31,17 +35,35 @@ public class PhaseOneImpl implements PhaseOne {
     }
 
     public void park() {
-        int i = 0;                       // Initialize basic counter
-        do
-        {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
-
-            moveForward();              // Move the car 1 meter and returns the status of the car
-            if (carStatus[1] == 5) {    // Check if there is enough spaces (5) to park the car or not
+        int i = whereIs();                       // Initialize basic counter
+        if (!parkingPlaces.empty()) {
+            if (whereIs() == parkingPlaces.peek()) {
                 isParked = true;        // Set the parking state of the car to parked (true)
-                carStatus[1] = 0;       // Reset the IS_EMPTY_COUNTER of the car
+
+            } else {
+                do
+                {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
+
+                    moveForward();              // Move the car 1 meter and returns the status of the car
+                    if (carStatus[1] == 5) {    // Check if there is enough spaces (5) to park the car or not
+                        isParked = true;        // Set the parking state of the car to parked (true)
+                        carStatus[1] = 0;       // Reset the IS_EMPTY_COUNTER of the car
+                    }
+                    i++;
+                } while (i < 500 && !isParked);
             }
-            i++;
-        } while (i < 500 && !isParked);
+        } else {
+            do
+            {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
+
+                moveForward();              // Move the car 1 meter and returns the status of the car
+                if (carStatus[1] == 5) {    // Check if there is enough spaces (5) to park the car or not
+                    isParked = true;        // Set the parking state of the car to parked (true)
+                    carStatus[1] = 0;       // Reset the IS_EMPTY_COUNTER of the car
+                }
+                i++;
+            } while (i < 500 && !isParked);
+        }
 
     }
 
