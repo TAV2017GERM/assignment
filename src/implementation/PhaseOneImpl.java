@@ -47,6 +47,7 @@ public class PhaseOneImpl implements PhaseOne {
     public boolean unPark() {
         if (isParked) {
             isParked = false;
+            if (whereIs() != 500) carStatus[0] += 1;
             return true;
         }
         return false;        // Return the parking status
