@@ -25,7 +25,7 @@ public class PhaseOneImpl implements PhaseOne {
     }
 
     public int[] moveBackward() {
-        if (whereIs() > 0 && !isParked) {     // Added so that it doesn't move past 0
+        if (whereIs() > 1 && !isParked) {     // Added so that it doesn't move past 0
             carStatus[0] -= 1;  // Decrements the position of the car
             if (isEmpty() == 1) {
                 carStatus[1]++;
@@ -36,22 +36,9 @@ public class PhaseOneImpl implements PhaseOne {
 
     public void park() {
         int i = whereIs();                       // Initialize basic counter
-        if (!parkingPlaces.empty()) {
-            if (whereIs() == parkingPlaces.peek()) {
-                isParked = true;        // Set the parking state of the car to parked (true)
+        if (!parkingPlaces.empty() && whereIs() == parkingPlaces.peek()) {
+            isParked = true;        // Set the parking state of the car to parked (true)
 
-            } else {
-                do
-                {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
-
-                    moveForward();              // Move the car 1 meter and returns the status of the car
-                    if (carStatus[1] == 5) {    // Check if there is enough spaces (5) to park the car or not
-                        isParked = true;        // Set the parking state of the car to parked (true)
-                        carStatus[1] = 0;       // Reset the IS_EMPTY_COUNTER of the car
-                    }
-                    i++;
-                } while (i < 500 && !isParked);
-            }
         } else {
             do
             {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
@@ -64,7 +51,6 @@ public class PhaseOneImpl implements PhaseOne {
                 i++;
             } while (i < 500 && !isParked);
         }
-
     }
 
     public void unPark() {

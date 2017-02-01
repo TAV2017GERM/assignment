@@ -27,6 +27,15 @@ public class PhaseOneImplTest {
     }
 
     /**
+     * Method: Wherels()
+     */
+    @Test
+    public void testWhereIs() throws Exception {
+        Assert.assertEquals(0, phaseOne.whereIs());
+        Assert.assertThat(phaseOne.whereIs(), instanceOf(Integer.class));
+    }
+
+    /**
      * Method: MoveForward()
      */
     @Test
@@ -37,16 +46,32 @@ public class PhaseOneImplTest {
     }
 
     /**
+     * Method: MoveBackward()
+     */
+    @Test
+    public void testMoveBackwardOnce() throws Exception {
+        int i = phaseOne.whereIs();
+        int j[] = phaseOne.moveBackward();
+        Assert.assertEquals(i, j[0]);
+    }
+
+    /**
      * Method MoveForward()
      * Move 500 times,
      */
     @Test
     public void testMoveForwardOOB() throws Exception {
-        int i = phaseOne.whereIs();
-        for (int j = 0; j < 501; j++) {
+        for (int j = 0; j < 600; j++) {
             phaseOne.moveForward();
         }
         Assert.assertEquals(500, phaseOne.whereIs());
+    }
+
+    @Test
+    public void testMoveBackwardOOB() throws Exception {
+        phaseOne.moveForward();
+        phaseOne.moveBackward();
+        Assert.assertEquals(1, phaseOne.whereIs());
     }
 
     @Test
@@ -70,23 +95,6 @@ public class PhaseOneImplTest {
         int i = phaseOne.carStatus[0];
         phaseOne.moveForward();
         Assert.assertEquals(i, phaseOne.whereIs());
-    }
-
-    /**
-     * Method: MoveBackward()
-     */
-    @Test
-    public void testMoveBackwardOnce() throws Exception {
-        int i = phaseOne.whereIs();
-        int j[] = phaseOne.moveBackward();
-        Assert.assertEquals(i, j[0]);
-    }
-
-    @Test
-    public void testMoveBackwardOOB() throws Exception {
-        int i = phaseOne.whereIs();
-        phaseOne.moveBackward();
-        Assert.assertEquals(0, phaseOne.whereIs());
     }
 
     @Test
@@ -190,15 +198,6 @@ public class PhaseOneImplTest {
         phaseOne.park();
         phaseOne.unPark();
         Assert.assertEquals(36, phaseOne.carStatus[0]);
-    }
-
-    /**
-     * Method: Wherels()
-     */
-    @Test
-    public void testWhereIs() throws Exception {
-        Assert.assertEquals(0, phaseOne.whereIs());
-        Assert.assertThat(phaseOne.whereIs(), instanceOf(Integer.class));
     }
 
     /**
