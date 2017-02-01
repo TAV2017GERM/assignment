@@ -135,7 +135,7 @@ public class PhaseOneImplTest {
 
     }
     @Test
-    public void testParkAt05() throws Exception {
+    public void testParkAfterMoveBackward() throws Exception {
 
         for(int i = 0; i<501;i++){
             phaseOne.moveForward();
