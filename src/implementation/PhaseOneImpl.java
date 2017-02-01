@@ -38,6 +38,7 @@ public class PhaseOneImpl implements PhaseOne {
             if(carStatus[1] == 5){    // Check if there is enough spaces (5) to park the car or not
                 isParked = true;        // Set the parking state of the car to parked (true)
                 carStatus[1] = 0;       // Reset the IS_EMPTY_COUNTER of the car
+                break;
             }
             i++;
         }while(i<500);
@@ -58,7 +59,7 @@ public class PhaseOneImpl implements PhaseOne {
 //        return (int) (Math.random() * 2);
        // return 0;      // Returns the integer o
         int i = whereIs();      // Store the position of the car
-        if(i > 30 && i<36){       // Hard coded "empty" space 31 - 35
+        if(i > 30 && i < 36){       // Hard coded "empty" space 31 - 35
             return 1;           // 1 == empty
         }else {
             return 0;           // 0 != empty
