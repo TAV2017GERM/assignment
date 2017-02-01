@@ -11,7 +11,7 @@ public class PhaseOneImpl implements PhaseOne {
     public boolean isParked = false;
 
     public int[] moveForward() {
-        if (whereIs() < 500) {  // Added so that it doesn't move past 500
+        if (whereIs() < 500 && !isParked) {  // Added so that it doesn't move past 500
             carStatus[0] += 1;  // Increments the position of the car
             if(isEmpty()==1){
                 carStatus[1]++;
@@ -38,10 +38,9 @@ public class PhaseOneImpl implements PhaseOne {
             if(carStatus[1] == 5){    // Check if there is enough spaces (5) to park the car or not
                 isParked = true;        // Set the parking state of the car to parked (true)
                 carStatus[1] = 0;       // Reset the IS_EMPTY_COUNTER of the car
-                break;
             }
             i++;
-        }while(i<500);
+        }while(i<500 && !isParked);
 
     }
 
