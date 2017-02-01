@@ -45,8 +45,11 @@ public class PhaseOneImpl implements PhaseOne {
     }
 
     public boolean unPark() {
-
-        return isParked;        // Return the parking status
+        if (isParked) {
+            isParked = false;
+            return true;
+        }
+        return false;        // Return the parking status
     }
 
     public int whereIs() {
