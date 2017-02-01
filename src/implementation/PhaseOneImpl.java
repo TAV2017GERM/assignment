@@ -10,7 +10,7 @@ public class PhaseOneImpl implements PhaseOne {
     private int IS_EMPTY_COUNTER = 0;
 
     public int[] carStatus = {POSITION, IS_EMPTY_COUNTER};
-    private Stack<Integer> parkingPlaces = new Stack<>();
+    private int[] parkingPlaces = new int[501];
     public boolean isParked = false;
     public boolean drivingForward = false;
 
@@ -25,10 +25,15 @@ public class PhaseOneImpl implements PhaseOne {
             if (isEmpty() == 1) {
                 carStatus[1]++;
                 if (carStatus[1] == 5) {
-                    parkingPlaces.push(whereIs());
+                    parkingPlaces[whereIs()] = whereIs();
+                    parkingPlaces[whereIs() - 1] = whereIs();
+                    parkingPlaces[whereIs() - 2] = whereIs();
+                    parkingPlaces[whereIs() - 3] = whereIs();
+                    parkingPlaces[whereIs() - 4] = whereIs();
                 }
             } else {
                 carStatus[1] = 0;
+                parkingPlaces[whereIs()] = 0;
             }
         }
         return carStatus;       // Return the status of the car
@@ -45,10 +50,15 @@ public class PhaseOneImpl implements PhaseOne {
             if (isEmpty() == 1) {
                 carStatus[1]++;
                 if (carStatus[1] == 5) {
-                    parkingPlaces.push(whereIs());
+                    parkingPlaces[whereIs()] = whereIs();
+                    parkingPlaces[whereIs() + 1] = whereIs();
+                    parkingPlaces[whereIs() + 2] = whereIs();
+                    parkingPlaces[whereIs() + 3] = whereIs();
+                    parkingPlaces[whereIs() + 4] = whereIs();
                 }
             } else {
                 carStatus[1] = 0;
+                parkingPlaces[whereIs()] = 0;
             }
         }
         return carStatus;       // Return the status of the car
@@ -56,9 +66,20 @@ public class PhaseOneImpl implements PhaseOne {
 
     public void park() {
         int i = whereIs();                       // Initialize basic counter
-        if (!parkingPlaces.empty() && whereIs() == parkingPlaces.peek()) {
+        if (!(parkingPlaces[whereIs()] == 0) && whereIs() != parkingPlaces[whereIs()]){
+            if (whereIs() < parkingPlaces[whereIs()]){
+                while (whereIs() != parkingPlaces[whereIs()] && !isParked){
+                    moveForward();
+                }
+                if (whereIs() == parkingPlaces[whereIs()]) isParked = true;
+            }else {
+                while (whereIs() != parkingPlaces[whereIs()] && !isParked){
+                    moveBackward();
+                }
+                if (whereIs() == parkingPlaces[whereIs()]) isParked = true;
+            }
+        } else if (whereIs() != 0 && whereIs() == parkingPlaces[whereIs()]) {
             isParked = true;        // Set the parking state of the car to parked (true)
-
         } else {
             do
             {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
