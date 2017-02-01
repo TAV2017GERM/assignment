@@ -100,6 +100,7 @@ public class PhaseOneImplTest {
         int i = phaseOne.carStatus[0];
         phaseOne.moveBackward();
         Assert.assertEquals(i,phaseOne.whereIs());
+
     }
 
     /**
