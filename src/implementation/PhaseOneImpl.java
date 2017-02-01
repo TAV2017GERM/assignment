@@ -58,7 +58,7 @@ public class PhaseOneImpl implements PhaseOne {
 //        return (int) (Math.random() * 2);
        // return 0;      // Returns the integer o
         int i = whereIs();      // Store the position of the car
-        if(30>i && i<36){       // Hard coded "empty" space 31 - 35
+        if(i > 30 && i<36){       // Hard coded "empty" space 31 - 35
             return 1;           // 1 == empty
         }else {
             return 0;           // 0 != empty
