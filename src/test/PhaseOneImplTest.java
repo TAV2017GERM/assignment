@@ -141,6 +141,24 @@ public class PhaseOneImplTest {
         phaseOne.unPark();
         Assert.assertEquals(false,phaseOne.isParked);
     }
+    @Test
+    public void testUnParkMoveForward() throws Exception {
+        phaseOne.park();
+        phaseOne.unPark();
+        int i = phaseOne.whereIs();
+        phaseOne.moveForward();
+        Assert.assertNotEquals(i,phaseOne.carStatus[0]);
+    }
+
+    @Test
+    public void testUnParkMoveBackward() throws Exception {
+        phaseOne.park();
+        phaseOne.unPark();
+        int i = phaseOne.whereIs();
+        phaseOne.moveBackward();
+        Assert.assertNotEquals(i,phaseOne.carStatus[0]);
+    }
+
 
     /**
      * Method: Wherels()
