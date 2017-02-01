@@ -28,12 +28,13 @@ public class PhaseOneImpl implements PhaseOne {
     }
 
     public void park() {
-        int i= 0;
-        do {
-            moveForward();
-            if(IS_EMPTY_COUNTER==5){
-                isParked = true;
-                carStatus[1] = 1;
+        int i= 0;                       // Initialize basic counter
+        do {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
+
+            moveForward();              // Move the car 1 meter and returns the status of the car
+            if(IS_EMPTY_COUNTER==5){    // Check if there is enough spaces (5) to park the car or not
+                isParked = true;        // Set the parking state of the car to parked (true)
+                carStatus[1] = 1;       // Reset the IS_EMPTY_COUNTER of the car
             }
             i++;
         }while(i<500);
@@ -53,11 +54,11 @@ public class PhaseOneImpl implements PhaseOne {
 
 //        return (int) (Math.random() * 2);
        // return 0;      // Returns the integer o
-        int i = whereIs();
-        if(30>i && i<36){
-            return 1;
+        int i = whereIs();      // Store the position of the car
+        if(30>i && i<36){       // Hard coded "empty" space 31 - 35
+            return 1;           // 1 == empty
         }else {
-            return 0;
+            return 0;           // 0 != empty
         }
     }
 }
