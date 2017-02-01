@@ -159,7 +159,6 @@ public class PhaseOneImplTest {
         Assert.assertNotEquals(i,phaseOne.carStatus[0]);
     }
 
-
     /**
      * Method: Wherels()
      */
