@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 /**
  * implementation.PhaseOneImpl Tester.
  *
- * @author GeoffreyC
+ * @author Group4
  * @version 1.0
  * @since <pre>Jan 30, 2017</pre>
  */
@@ -86,7 +86,7 @@ public class PhaseOneImplTest {
     @Test
     public void testMoveBackwardParkStatus() throws Exception {
         int i[] = phaseOne.moveBackward();
-        Assert.assertEquals(phaseOne.isEmpty(), i[1]);
+        Assert.assertEquals(i[1],phaseOne.isEmpty());
     }
 
     /**
@@ -104,10 +104,17 @@ public class PhaseOneImplTest {
     @Test
     public void testParkMoveFindParking() throws Exception {
 
+        phaseOne.park();
+
+        Assert.assertEquals(true, phaseOne.isParked);
+
+    }
+    @Test
+    public void testParkStopAtParking() throws Exception {
 
         phaseOne.park();
         Assert.assertEquals(phaseOne.whereIs(), phaseOne.carStatus[0]);
-        Assert.assertEquals(true, phaseOne.isParked);
+        Assert.assertEquals(35, phaseOne.carStatus[0]);
 
     }
 

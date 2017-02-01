@@ -1,7 +1,7 @@
 package implementation;
 
 /**
- * @author by Geoffrey on 2017-01-27.
+ * @author by Group4 on 2017-01-27.
  */
 public interface PhaseOne {
 
