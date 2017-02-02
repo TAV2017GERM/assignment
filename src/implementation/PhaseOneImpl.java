@@ -82,7 +82,7 @@ public class PhaseOneImpl implements PhaseOne {
         // Check if the car isn't at the first position and that it isn't parked
         if (!(parkingPlaces[whereIs()] == 0) && whereIs() != parkingPlaces[whereIs()]) {
 
-            // TODO - WHAT IS THIS??? Don't know what to comment
+            // Move the car to the closest, already recorded, parking place
             if (whereIs() < parkingPlaces[whereIs()]) {
                 while (whereIs() != parkingPlaces[whereIs()] && !isParked) {
                     moveForward();
@@ -124,7 +124,7 @@ public class PhaseOneImpl implements PhaseOne {
     public int isEmpty() {
         int i = whereIs();      // Store the position of the car
 
-        // Simulation of parking places at 496-500 and 31-35. TODO - Integrate sensors, not part of PHASE ONE
+        // Simulation of parking places at 496-500 and 31-35.
         if ((i > 495 && i < 501) || (i > 30 && i < 36)) {
             return 1;           // 1 == empty
         }
