@@ -28,8 +28,7 @@ interface PhaseOne {
      * <p>
      * Post-Condition: int distance to target
      * <p>
-     * Test-cases: testIsEmpty, testMoveForwardParkStatus, testMoveBackwardParkStatus, testMoveForward500carStatus,
-     *
+     * Test-cases: testIsEmpty, testMoveForwardParkStatus, testMoveBackwardParkStatus, testMoveForward500carStatus.
      */
     int isEmpty();
 
@@ -79,8 +78,7 @@ interface PhaseOne {
      * <p>
      * Post-condition:  return position and isParked;
      * <p>
-     * Test-cases: testWhereIs, testMoveForwardOnce, testMoveBackwardOnce, testMoveForwardOOB, testMoveBackwardOOB,
-     *
+     * Test-cases: testWhereIs, testMoveForwardOnce, testMoveBackwardOnce, testMoveForwardOOB, testMoveBackwardOOB.
      */
     int whereIs();
 

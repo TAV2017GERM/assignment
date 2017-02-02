@@ -4,13 +4,13 @@ package implementation;
  * @author by Group4 on 2017-01-27.
  */
 public class PhaseOneImpl implements PhaseOne {
-    private int POSITION = 0;
-    private int IS_EMPTY_COUNTER = 0;
+    private int POSITION = 0, IS_EMPTY_COUNTER = 0;
+
+    private int[] parkingPlaces = new int[501];
+    private boolean drivingForward = false;
 
     public int[] carStatus = {POSITION, IS_EMPTY_COUNTER};
-    private int[] parkingPlaces = new int[501];
     public boolean isParked = false;
-    private boolean drivingForward = false;
 
     public int[] moveForward() {
         if (whereIs() < 500 && !isParked) { // Added so that it doesn't move past 500
