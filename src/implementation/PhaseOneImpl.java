@@ -130,7 +130,7 @@ public class PhaseOneImpl implements PhaseOne {
             // Store the position of the car
         }
 
-        return 0;           // 0 != empty
+        return 0;
 
     }
 }
