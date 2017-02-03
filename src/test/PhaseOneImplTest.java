@@ -80,19 +80,19 @@ public class PhaseOneImplTest {
     @Test
     public void testIsEmpty() throws Exception {
         Assert.assertThat(phaseOne.isEmpty(), instanceOf(Integer.class));
-        Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() == 1 || phaseOne.isEmpty() == 0);
+        Assert.assertTrue(String.valueOf(phaseOne.isEmpty()), phaseOne.isEmpty() > 0 || phaseOne.isEmpty() < 200);
     }
 
     @Test
     public void testMoveForwardParkStatus() throws Exception {
         int i[] = phaseOne.moveForward();
-        Assert.assertEquals(phaseOne.isEmpty(), i[1]);
+        Assert.assertEquals( 0, i[1]);
     }
 
     @Test
     public void testMoveBackwardParkStatus() throws Exception {
         int i[] = phaseOne.moveBackward();
-        Assert.assertEquals(i[1], phaseOne.isEmpty());
+        Assert.assertEquals(i[1], 0);
     }
 
     /**
