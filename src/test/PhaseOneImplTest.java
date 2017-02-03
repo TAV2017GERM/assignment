@@ -92,7 +92,6 @@ public class PhaseOneImplTest {
     @Test
     public void testMoveBackwardParkStatus() throws Exception {
         int i[] = phaseOne.moveBackward();
-        int d = phaseOne.isEmpty();
         Assert.assertEquals(0, i[1]);
     }
 
