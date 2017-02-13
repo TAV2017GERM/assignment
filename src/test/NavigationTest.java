@@ -1,4 +1,4 @@
-import implementation.PhaseOneImpl;
+import Controllers.Navigation;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,19 +7,19 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
- * implementation.PhaseOneImpl Tester.
+ * Controllers.Navigation Tester.
  *
  * @author Group4
  * @version 1.0
  * @since <pre>Jan 30, 2017</pre>
  */
-public class PhaseOneImplTest {
+public class NavigationTest {
 
-    private PhaseOneImpl phaseOne;
+    private Navigation phaseOne;
 
     @Before
     public void before() throws Exception {
-        phaseOne = new PhaseOneImpl();
+        phaseOne = new Navigation();
     }
 
     @After

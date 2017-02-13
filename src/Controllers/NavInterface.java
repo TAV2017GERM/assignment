@@ -1,9 +1,9 @@
-package implementation;
+package Controllers;
 
 /**
  * @author by Group4 on 2017-01-27.
  */
-interface PhaseOne {
+interface NavInterface {
 
     /**
      * Description: Moves the car 1 meter forward. Returns the current position of the car and the status of the status of
