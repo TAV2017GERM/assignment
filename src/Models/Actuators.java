@@ -5,12 +5,12 @@ package Models;
  */
 public class Actuators implements ActuatorsInterface{
     @Override
-    public int runFwd() {
+    public int runFwd(int position) {
         return 0;
     }
 
     @Override
-    public int runBkd() {
+    public int runBkd(int position) {
         return 0;
     }
 
