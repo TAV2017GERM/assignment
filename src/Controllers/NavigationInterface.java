@@ -3,7 +3,7 @@ package Controllers;
 /**
  * @author by Group4 on 2017-01-27.
  */
-interface NavInterface {
+interface NavigationInterface {
 
     /**
      * Description: Moves the car 1 meter forward. Returns the current position of the car and the status of the status of
@@ -70,16 +70,5 @@ interface NavInterface {
     void unPark();
 
 
-    /**
-     * Description:  This method returns the current position of the car in the street as well as its situation
-     * (whether it is parked or not).
-     * <p>
-     * Pre-condition:int: nothing relevant to this method;
-     * <p>
-     * Post-condition:  return position and isParked;
-     * <p>
-     * Test-cases: testWhereIs, testMoveForwardOnce, testMoveBackwardOnce, testMoveForwardOOB, testMoveBackwardOOB.
-     */
-    int whereIs();
 
 }

@@ -3,7 +3,7 @@ package Models;
 /**
  * @author Group 4 on 2/13/17.
  */
-public interface USInterface {
+public interface UltraSonicInterface {
 
     /**
      * Description: Measure the distance to the nearest object with a range of 0 - 255

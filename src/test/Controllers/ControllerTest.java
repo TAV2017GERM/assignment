@@ -1,6 +1,6 @@
 package Controllers;
 
-import Controllers.Navigation;
+import Controllers.Controller;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,19 +9,19 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
- * Controllers.Navigation Tester.
+ * Controllers.Controller Tester.
  *
  * @author Group4
  * @version 1.0
  * @since <pre>Jan 30, 2017</pre>
  */
-public class NavigationTest {
+public class ControllerTest {
 
-    private Navigation phaseOne;
+    private Controller phaseOne;
 
     @Before
     public void before() throws Exception {
-        phaseOne = new Navigation();
+        phaseOne = new Controller();
     }
 
     @After

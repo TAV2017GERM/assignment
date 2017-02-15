@@ -11,22 +11,22 @@ import static org.junit.Assert.*;
  */
 public class CarStatusTest {
     @Test
-    public void setCarPosition() throws Exception {
+    public void testsetCarPosition() throws Exception {
 
     }
 
     @Test
-    public void whereIs() throws Exception {
+    public void testWhereIs() throws Exception {
 
     }
 
     @Test
-    public void registerParkingPlaces() throws Exception {
+    public void testRegisterParkingPlaces() throws Exception {
 
     }
 
     @Test
-    public void fetchParkingPlace() throws Exception {
+    public void testFetchParkingPlace() throws Exception {
 
     }
 
