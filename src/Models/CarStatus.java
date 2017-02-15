@@ -5,17 +5,10 @@ package Models;
  */
 public class CarStatus {
     private int[] status;
-    private int[] parkingPlaces = new int[501];
-
-    private int IS_EMPTY_COUNTER;
 
     public CarStatus() {
         status = new int[501];
-        IS_EMPTY_COUNTER = 0;
     }
-
-
-
 
     public void setCarPosition(int position) {
         status[0] = position;
@@ -28,19 +21,19 @@ public class CarStatus {
     public void registerParkingPlaces(int i) {
 
         if (i == 1) {
-            parkingPlaces[whereIs()] = whereIs();
-            parkingPlaces[whereIs() - 1] = whereIs();
-            parkingPlaces[whereIs() - 2] = whereIs();
-            parkingPlaces[whereIs() - 3] = whereIs();
-            parkingPlaces[whereIs() - 4] = whereIs();
+            status[whereIs()] = whereIs();
+            status[whereIs() - 1] = whereIs();
+            status[whereIs() - 2] = whereIs();
+            status[whereIs() - 3] = whereIs();
+            status[whereIs() - 4] = whereIs();
         } else if (i == -1){
-            parkingPlaces[whereIs()] = whereIs();
-            parkingPlaces[whereIs() + 1] = whereIs();
-            parkingPlaces[whereIs() + 2] = whereIs();
-            parkingPlaces[whereIs() + 3] = whereIs();
-            parkingPlaces[whereIs() + 4] = whereIs();
+            status[whereIs()] = whereIs();
+            status[whereIs() + 1] = whereIs();
+            status[whereIs() + 2] = whereIs();
+            status[whereIs() + 3] = whereIs();
+            status[whereIs() + 4] = whereIs();
         } else{
-            parkingPlaces[whereIs()] = 0;
+            status[whereIs()] = 0;
         }
     }
 
