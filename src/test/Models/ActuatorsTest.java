@@ -1,6 +1,11 @@
 package Models;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +16,16 @@ import static org.junit.Assert.*;
  * @version 1.0
  * @since <pre>Feb 15, 2017</pre>
  */
+
+@RunWith(MockitoJUnitRunner.class)
 public class ActuatorsTest {
+    @Mock
+    Actuators actu;
+    @Before
+    public void setActu() throws Exception{
+        MockitoAnnotations.initMocks(actu);
+    }
+
     @Test
     public void runFwd() throws Exception {
 
