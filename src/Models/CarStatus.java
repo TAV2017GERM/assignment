@@ -6,6 +6,7 @@ package Models;
 public class CarStatus {
     private int[] status;
 
+
     public CarStatus() {
         status = new int[501];
     }

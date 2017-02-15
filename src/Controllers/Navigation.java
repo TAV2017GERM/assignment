@@ -16,7 +16,7 @@ public class Navigation implements NavigationInterface {
 
     private Actuators actuators;
     private UltraSonic ultraSonic;
-    private CarStatus cStatus;
+   CarStatus cStatus;
 
     public Navigation() {
         IS_EMPTY_COUNTER = 0;
