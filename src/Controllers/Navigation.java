@@ -37,15 +37,18 @@ public class Navigation implements NavigationInterface {
                 if (IS_EMPTY_COUNTER > 0) IS_EMPTY_COUNTER = 1;
                 else IS_EMPTY_COUNTER = 0;
             }
-            int i = cStatus.whereIs();
-            carStatus[0] += 1;  // Increments the position of the car
+            int carPos = cStatus.whereIs();
+            int newCarPos = actuators.moveForward(carPos);          // Increments the position of the car
+
+            cStatus.setCarPosition(newCarPos);
+
             if (isEmpty() == 1) {
-                carStatus[1]++;
-                if (carStatus[1] == 5) {
+                IS_EMPTY_COUNTER++;
+                if (IS_EMPTY_COUNTER == 5) {
                     cStatus.registerParkingPlaces();
                 }
             } else {
-                carStatus[1] = 0;
+                IS_EMPTY_COUNTER = 0;
                 parkingPlaces[cStatus.whereIs()] = 0;
             }
         }
