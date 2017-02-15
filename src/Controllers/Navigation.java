@@ -126,14 +126,17 @@ public class Navigation implements NavigationInterface {
     public int isEmpty() {
         //simulate random sensor data
         int k = 0;
-        int sensor1, badSensor, total1 = 0, total2 = 0, readingToReturn;
+        int sensor, total1 = 0, total2 = 0, readingToReturn;
         while (k < 5) {
-            sensor1 = ThreadLocalRandom.current().nextInt(0, 200);
-            badSensor = ThreadLocalRandom.current().nextInt(200, 300);
-            total1 += sensor1;
-            total2 += badSensor;
+            sensor = ultraSonic.getDistance();
+            if (sensor > 0 || sensor < 200) {
+                total1 += sensor;
+            } else {
+                total2 += sensor;
+            }
             k++;
         }
+
         int i = cStatus.whereIs();
         if ((i > 495 && i < 501) || (i > 30 && i < 36)) {       // Hard coded "empty" space 31 - 35 and 495 - 500
             return 1;           // 1 == empty
@@ -145,11 +148,7 @@ public class Navigation implements NavigationInterface {
                 readingToReturn = total1 / 5;
                 return readingToReturn;
             }
-
-            // Store the position of the car
         }
-
         return 0;
-
     }
 }

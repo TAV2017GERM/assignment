@@ -46,8 +46,7 @@ public class NavigationTest {
     @Test
     public void testMoveForwardOnce() throws Exception {
         int i = phaseOne.cStatus.whereIs();
-        int j[] = phaseOne.moveForward();
-
+        phaseOne.moveForward();
         Assert.assertEquals(i + 1, phaseOne.cStatus.whereIs());
     }
 

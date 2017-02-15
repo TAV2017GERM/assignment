@@ -5,15 +5,22 @@ package Models;
  */
 public class Actuators implements ActuatorsInterface {
 
-
     @Override
     public int moveForward(int position) {
-        return position + 1;
+        if (position > 1 || position < 500) {
+            return position + 1;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
     public int moveBackward(int position) {
-        return position - 1;
+        if (position > 1 || position < 500) {
+            return position - 1;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
 }
