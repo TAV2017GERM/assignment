@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 class UltraSonicTest {
     @Mock
-    UltraSonic failingDispenser;
+    UltraSonic USMock;
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
