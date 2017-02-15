@@ -200,10 +200,10 @@ public class NavigationTest {
     @Test
     public void testParkAfterMoveBackward() throws Exception {
 
-        for (int i = 0; i < 501; i++) {
+        for (int i = 0; i < 500; i++) {
             phaseOne.moveForward();
         }
-        for (int i = 500; i != 35; i--) {
+        for (int i = phaseOne.cStatus.whereIs(); i != 35; i--) {
             phaseOne.moveBackward();
         }
         phaseOne.park();

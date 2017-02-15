@@ -6,17 +6,19 @@ package Models;
 public class CarStatus {
     private int[] status;
 
-
     public CarStatus() {
         status = new int[501];
     }
 
     public void setCarPosition(int position) {
-        status[0] = position;
+        if (position > 1 || position < 500) {
+            status[0] = position;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int whereIs() {
-        System.out.println("where" + status[0]);
         return status[0];   // Return the position of the car
     }
 

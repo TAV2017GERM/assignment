@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Navigation implements NavigationInterface {
      boolean isParked;
-    private boolean drivingForward;
+     private boolean drivingForward;
      int IS_EMPTY_COUNTER;
 
     private Actuators actuators;
@@ -62,7 +62,7 @@ public class Navigation implements NavigationInterface {
             }
 
             int carPos = cStatus.whereIs();
-            int newCarPos = actuators.moveForward(carPos);          // Increments the position of the car
+            int newCarPos = actuators.moveBackward(carPos);          // Increments the position of the car
 
             cStatus.setCarPosition(newCarPos);
 
