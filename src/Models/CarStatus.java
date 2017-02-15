@@ -14,6 +14,9 @@ public class CarStatus {
         IS_EMPTY_COUNTER = 0;
     }
 
+
+
+
     public void setCarPosition(int position) {
         status[0] = position;
     }
