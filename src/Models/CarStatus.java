@@ -26,7 +26,7 @@ public class CarStatus {
         return status[0];
     }
 
-    public void registerParkingPlaces() {
+    public void registerParkingPlaces(int i) {
         parkingPlaces[whereIs()] = whereIs();
         parkingPlaces[whereIs() - 1] = whereIs();
         parkingPlaces[whereIs() - 2] = whereIs();

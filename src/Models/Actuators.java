@@ -7,12 +7,12 @@ public class Actuators implements ActuatorsInterface {
 
 
     @Override
-    public int runFwd(int position) {
+    public int moveForward(int position) {
         return 0;
     }
 
     @Override
-    public int runBkd(int position) {
+    public int moveBackward(int position) {
         return 0;
     }
 
