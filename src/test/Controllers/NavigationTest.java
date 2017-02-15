@@ -1,6 +1,7 @@
 package Controllers;
 
-import Controllers.Controller;
+import Controllers.Navigation;
+import Models.CarStatus;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,13 +16,15 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  * @version 1.0
  * @since <pre>Jan 30, 2017</pre>
  */
-public class ControllerTest {
+public class NavigationTest {
 
-    private Controller phaseOne;
+    private Navigation phaseOne;
+    private CarStatus carStatus;
 
     @Before
     public void before() throws Exception {
-        phaseOne = new Controller();
+        phaseOne = new Navigation();
+        carStatus = new CarStatus();
     }
 
     @After
@@ -33,8 +36,8 @@ public class ControllerTest {
      */
     @Test
     public void testWhereIs() throws Exception {
-        Assert.assertEquals(0, phaseOne.whereIs());
-        Assert.assertThat(phaseOne.whereIs(), instanceOf(Integer.class));
+        Assert.assertEquals(0, carStatus.whereIs());
+        Assert.assertThat(carStatus.whereIs(), instanceOf(Integer.class));
     }
 
     /**
@@ -42,9 +45,9 @@ public class ControllerTest {
      */
     @Test
     public void testMoveForwardOnce() throws Exception {
-        int i = phaseOne.whereIs();
+        int i = carStatus.whereIs();
         phaseOne.moveForward();
-        Assert.assertEquals(i + 1, phaseOne.whereIs());
+        Assert.assertEquals(i + 1, carStatus.whereIs());
     }
 
     /**
@@ -52,7 +55,7 @@ public class ControllerTest {
      */
     @Test
     public void testMoveBackwardOnce() throws Exception {
-        int i = phaseOne.whereIs();
+        int i = carStatus.whereIs();
         int j[] = phaseOne.moveBackward();
         Assert.assertEquals(i, j[0]);
     }
@@ -66,14 +69,14 @@ public class ControllerTest {
         for (int j = 0; j < 600; j++) {
             phaseOne.moveForward();
         }
-        Assert.assertEquals(500, phaseOne.whereIs());
+        Assert.assertEquals(500, carStatus.whereIs());
     }
 
     @Test
     public void testMoveBackwardOOB() throws Exception {
         phaseOne.moveForward();
         phaseOne.moveBackward();
-        Assert.assertEquals(1, phaseOne.whereIs());
+        Assert.assertEquals(1, carStatus.whereIs());
     }
 
     /**
@@ -103,9 +106,9 @@ public class ControllerTest {
      */
     @Test
     public void testParkCarMovedForward() throws Exception {
-        int i = phaseOne.whereIs();
+        int i = carStatus.whereIs();
         phaseOne.park();
-        int j = phaseOne.whereIs();
+        int j = carStatus.whereIs();
         Assert.assertTrue(j > i);
     }
 
@@ -130,7 +133,7 @@ public class ControllerTest {
     @Test
     public void testParkStopAtParking() throws Exception {
         phaseOne.park();
-        Assert.assertEquals(phaseOne.whereIs(), phaseOne.carStatus[0]);
+        Assert.assertEquals(carStatus.whereIs(), phaseOne.carStatus[0]);
     }
 
     @Test
@@ -138,7 +141,7 @@ public class ControllerTest {
         phaseOne.park();
         int i = phaseOne.carStatus[0];
         phaseOne.moveForward();
-        Assert.assertEquals(i, phaseOne.whereIs());
+        Assert.assertEquals(i, carStatus.whereIs());
     }
 
     @Test
@@ -146,7 +149,7 @@ public class ControllerTest {
         phaseOne.park();
         int i = phaseOne.carStatus[0];
         phaseOne.moveBackward();
-        Assert.assertEquals(i, phaseOne.whereIs());
+        Assert.assertEquals(i, carStatus.whereIs());
 
     }
 
@@ -164,7 +167,7 @@ public class ControllerTest {
     public void testUnParkMoveForward() throws Exception {
         phaseOne.park();
         phaseOne.unPark();
-        int i = phaseOne.whereIs();
+        int i = carStatus.whereIs();
         phaseOne.moveForward();
         Assert.assertNotEquals(i, phaseOne.carStatus[0]);
     }
@@ -173,7 +176,7 @@ public class ControllerTest {
     public void testUnParkMoveBackward() throws Exception {
         phaseOne.park();
         phaseOne.unPark();
-        int i = phaseOne.whereIs();
+        int i = carStatus.whereIs();
         phaseOne.moveBackward();
         Assert.assertNotEquals(i, phaseOne.carStatus[0]);
     }
