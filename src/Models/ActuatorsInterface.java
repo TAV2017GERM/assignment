@@ -6,22 +6,22 @@ package Models;
 public interface ActuatorsInterface  {
 
     /**
-     * Description:
+     * Description: Increase the position of the car
      * <p>
-     * Pre-condition:
+     * Pre-condition: position < 500
      * <p>
-     * Post-condition:
+     * Post-condition: position <= 500
      * <p>
      * Test-cases:
      */
     void runFwd();
 
     /**
-     * Description:
+     * Description: Decrease the position of the car
      * <p>
-     * Pre-condition:
+     * Pre-condition: position > 0
      * <p>
-     * Post-condition:
+     * Post-condition: position =< 0
      * <p>
      * Test-cases:
      */
