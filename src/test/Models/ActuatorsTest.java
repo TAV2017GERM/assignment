@@ -5,7 +5,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by mattias on 2017-02-15.
+ * Controllers.Navigation Tester.
+ *
+ * @author Group4
+ * @version 1.0
+ * @since <pre>Feb 15, 2017</pre>
  */
 public class ActuatorsTest {
     @Test
