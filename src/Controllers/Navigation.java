@@ -12,16 +12,16 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Navigation implements NavigationInterface {
     private boolean isParked;
     private boolean drivingForward;
-    private int IS_EMPTY_COUNTER = 0;
+    private int IS_EMPTY_COUNTER;
 
 
-    private int[] parkingPlaces = new int[501];
 
     private Actuators actuators;
     private UltraSonic ultraSonic;
     private CarStatus cStatus;
 
     public Navigation() {
+        IS_EMPTY_COUNTER = 0;
         isParked = false;
         drivingForward = false;
         actuators = new Actuators();
