@@ -1,6 +1,6 @@
 package Controllers;
 
-import Controllers.Navigation;
+
 import Models.CarStatus;
 import org.junit.After;
 import org.junit.Assert;
@@ -118,7 +118,7 @@ public class NavigationTest {
         for (int j = 0; j < 501; j++) {
             phaseOne.moveForward();
         }
-        Assert.assertNotEquals(0, phaseOne.carStatus[1]);
+        Assert.assertNotEquals(0, phaseOne.IS_EMPTY_COUNTER);
     }
 
     @Test
@@ -133,13 +133,13 @@ public class NavigationTest {
     @Test
     public void testParkStopAtParking() throws Exception {
         phaseOne.park();
-        Assert.assertEquals(carStatus.whereIs(), phaseOne.carStatus[0]);
+        Assert.assertEquals(carStatus.whereIs(), carStatus.whereIs());
     }
 
     @Test
     public void testMoveForwardAfterParked() throws Exception {
         phaseOne.park();
-        int i = phaseOne.carStatus[0];
+        int i = carStatus.whereIs();
         phaseOne.moveForward();
         Assert.assertEquals(i, carStatus.whereIs());
     }
@@ -147,7 +147,7 @@ public class NavigationTest {
     @Test
     public void testMoveBackwardAfterParked() throws Exception {
         phaseOne.park();
-        int i = phaseOne.carStatus[0];
+        int i = carStatus.whereIs();
         phaseOne.moveBackward();
         Assert.assertEquals(i, carStatus.whereIs());
 
@@ -169,7 +169,7 @@ public class NavigationTest {
         phaseOne.unPark();
         int i = carStatus.whereIs();
         phaseOne.moveForward();
-        Assert.assertNotEquals(i, phaseOne.carStatus[0]);
+        Assert.assertNotEquals(i, carStatus.whereIs());
     }
 
     @Test
@@ -178,7 +178,7 @@ public class NavigationTest {
         phaseOne.unPark();
         int i = carStatus.whereIs();
         phaseOne.moveBackward();
-        Assert.assertNotEquals(i, phaseOne.carStatus[0]);
+        Assert.assertNotEquals(i, carStatus.whereIs());
     }
 
     @Test
@@ -186,14 +186,14 @@ public class NavigationTest {
         phaseOne.park();
         phaseOne.unPark();
         phaseOne.park();
-        Assert.assertEquals(500, phaseOne.carStatus[0]);
+        Assert.assertEquals(500, carStatus.whereIs());
     }
 
     @Test
     public void testUnParkAt35() {
         phaseOne.park();
         phaseOne.unPark();
-        Assert.assertEquals(36, phaseOne.carStatus[0]);
+        Assert.assertEquals(36, carStatus.whereIs());
     }
 
     @Test
@@ -206,7 +206,7 @@ public class NavigationTest {
             phaseOne.moveBackward();
         }
         phaseOne.park();
-        Assert.assertEquals(35, phaseOne.carStatus[0]);
+        Assert.assertEquals(35, carStatus.whereIs());
         Assert.assertEquals(true, phaseOne.isParked);
 
     }
@@ -214,16 +214,16 @@ public class NavigationTest {
     @Test
     public void testFinalTest() {
         phaseOne.park();
-        Assert.assertEquals(35, phaseOne.carStatus[0]);
+        Assert.assertEquals(35, carStatus.whereIs());
         Assert.assertEquals(true, phaseOne.isParked);
         phaseOne.unPark();
-        Assert.assertEquals(36, phaseOne.carStatus[0]);
+        Assert.assertEquals(36, carStatus.whereIs());
         Assert.assertEquals(false, phaseOne.isParked);
         phaseOne.park();
-        Assert.assertEquals(500, phaseOne.carStatus[0]);
+        Assert.assertEquals(500, carStatus.whereIs());
         Assert.assertEquals(true, phaseOne.isParked);
         phaseOne.unPark();
-        Assert.assertEquals(500, phaseOne.carStatus[0]);
+        Assert.assertEquals(500, carStatus.whereIs());
         Assert.assertEquals(false, phaseOne.isParked);
     }
 
