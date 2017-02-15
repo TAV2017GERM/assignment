@@ -1,5 +1,7 @@
 package Models;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -9,6 +11,15 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 1.0
  * @since <pre>Feb 15, 2017</pre>
  */
-class USInterfaceTest {
+class UltraSonicTest {
+    @Test
+    void measureDistance() {
+
+    }
+
+    @Test
+    void getDistance() {
+
+    }
 
 }
