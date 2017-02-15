@@ -8,8 +8,7 @@ public class CarStatus {
 
     private int IS_EMPTY_COUNTER;
 
-    public CarStatus()
-    {
+    public CarStatus() {
         status = new int[501];
         IS_EMPTY_COUNTER = 0;
     }
@@ -18,20 +17,19 @@ public class CarStatus {
         return status[0];    // Return the position of the car
     }
 
-    public void setCarPosition(int position)
-    {
+    public void setCarPosition(int position) {
         status[0] = position;
     }
 
-    public int whereIs(){
+    public int whereIs() {
         return status[0];
     }
 
-    public void registerParkingPlaces(){
+    public void registerParkingPlaces() {
 
     }
 
-    public int fetchParkingPlace(int position){
+    public int fetchParkingPlace(int position) {
         return status[position];
     }
 }
