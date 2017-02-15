@@ -20,6 +20,7 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class ActuatorsTest {
     @Mock
+    private
     Actuators actu;
     @Before
     public void setActu() throws Exception{
@@ -27,12 +28,12 @@ public class ActuatorsTest {
     }
 
     @Test
-    public void runFwd() throws Exception {
+    public void testRunFwd() throws Exception {
 
     }
 
     @Test
-    public void runBkd() throws Exception {
+    public void testRunBkd() throws Exception {
 
     }
 

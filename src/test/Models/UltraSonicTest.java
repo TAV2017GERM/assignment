@@ -21,6 +21,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class UltraSonicTest {
     @Mock
+    private
     UltraSonic USMock;
 
     @Before
@@ -30,12 +31,12 @@ public class UltraSonicTest {
     }
 
     @Test
-    public void measureDistance() {
+    public void testMeasureDistance() {
 
     }
 
     @Test
-    public void getDistanceTest() {
+    public void testGetDistanceTest() {
 
     Mockito.when(USMock.getDistance()).thenReturn(0);
     Assert.assertEquals(0,USMock.getDistance());
