@@ -45,35 +45,40 @@ public class Navigation implements NavigationInterface {
             if (isEmpty() == 1) {
                 IS_EMPTY_COUNTER++;
                 if (IS_EMPTY_COUNTER == 5) {
-                    cStatus.registerParkingPlaces();
+                    cStatus.registerParkingPlaces(1);
                 }
             } else {
                 IS_EMPTY_COUNTER = 0;
-                parkingPlaces[cStatus.whereIs()] = 0;
+                cStatus.registerParkingPlaces(0);
             }
         }
-        return carStatus;       // Return the status of the car
+        return cStatus.getCarStatus();       // Return the status of the car
     }
 
     public int[] moveBackward() {
         if (cStatus.whereIs() > 1 && !isParked) {     // Added so that it doesn't move past 0
             if (drivingForward) {
                 drivingForward = false;
-                if (carStatus[1] > 0) carStatus[1] = 1;
-                else carStatus[1] = 0;
+                if (IS_EMPTY_COUNTER > 0)IS_EMPTY_COUNTER = 1;
+                else IS_EMPTY_COUNTER = 0;
             }
-            carStatus[0] -= 1;  // Decrements the position of the car
+
+            int carPos = cStatus.whereIs();
+            int newCarPos = actuators.moveForward(carPos);          // Increments the position of the car
+
+            cStatus.setCarPosition(newCarPos);
+
             if (isEmpty() == 1) {
-                carStatus[1]++;
-                if (carStatus[1] == 5) {
-                    cStatus.registerParkingPlaces();
+                IS_EMPTY_COUNTER++;
+                if (IS_EMPTY_COUNTER == 5) {
+                    cStatus.registerParkingPlaces(1);
                 }
             } else {
-                carStatus[1] = 0;
-                parkingPlaces[cStatus.whereIs()] = 0;
+                IS_EMPTY_COUNTER = 0;
+                cStatus.registerParkingPlaces(0);
             }
         }
-        return carStatus;       // Return the status of the car
+        return cStatus.getCarStatus();       // Return the status of the car
     }
 
     public void park() {
