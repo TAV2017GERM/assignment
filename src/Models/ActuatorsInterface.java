@@ -5,8 +5,26 @@ package Models;
  */
 public interface ActuatorsInterface {
 
+    /**
+     * Description:
+     * <p>
+     * Pre-condition:
+     * <p>
+     * Post-condition:
+     * <p>
+     * Test-cases:
+     */
     void runFwd();
 
+    /**
+     * Description:
+     * <p>
+     * Pre-condition:
+     * <p>
+     * Post-condition:
+     * <p>
+     * Test-cases:
+     */
     void runBkd();
 
 }
