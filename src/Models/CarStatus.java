@@ -14,9 +14,6 @@ public class CarStatus {
         IS_EMPTY_COUNTER = 0;
     }
 
-
-
-
     public void setCarPosition(int position) {
         status[0] = position;
     }
@@ -27,15 +24,26 @@ public class CarStatus {
 
     public void registerParkingPlaces(int i) {
 
-        parkingPlaces[whereIs()] = whereIs();
-        parkingPlaces[whereIs() - 1] = whereIs();
-        parkingPlaces[whereIs() - 2] = whereIs();
-        parkingPlaces[whereIs() - 3] = whereIs();
-        parkingPlaces[whereIs() - 4] = whereIs();
+        if (i == 1) {
+            parkingPlaces[whereIs()] = whereIs();
+            parkingPlaces[whereIs() - 1] = whereIs();
+            parkingPlaces[whereIs() - 2] = whereIs();
+            parkingPlaces[whereIs() - 3] = whereIs();
+            parkingPlaces[whereIs() - 4] = whereIs();
+        } else if (i == -1){
+            parkingPlaces[whereIs()] = whereIs();
+            parkingPlaces[whereIs() + 1] = whereIs();
+            parkingPlaces[whereIs() + 2] = whereIs();
+            parkingPlaces[whereIs() + 3] = whereIs();
+            parkingPlaces[whereIs() + 4] = whereIs();
+        } else{
+            parkingPlaces[whereIs()] = 0;
+        }
     }
 
     public int fetchParkingPlace(int position) {
-        return status[position];
+        if (position == 0 || position > 500) throw new IllegalArgumentException();
+        else return status[position];
     }
     public int[] getCarStatus(){
         return status;
