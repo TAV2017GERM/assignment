@@ -3,7 +3,7 @@ package Models;
 /**
  * @author Group 4 on 2/13/17.
  */
-public class CarStatus implements CarStatusInterface{
+public class CarStatus {
     private int[] status;
 
     private int IS_EMPTY_COUNTER;
@@ -12,6 +12,10 @@ public class CarStatus implements CarStatusInterface{
     {
         status = new int[501];
         IS_EMPTY_COUNTER = 0;
+    }
+
+    public static int whereIs(int[] status) {
+        return status[0];    // Return the position of the car
     }
 
     public void setCarPosition(int position)

@@ -70,16 +70,5 @@ interface NavigationInterface {
     void unPark();
 
 
-    /**
-     * Description:  This method returns the current position of the car in the street as well as its situation
-     * (whether it is parked or not).
-     * <p>
-     * Pre-condition:int: nothing relevant to this method;
-     * <p>
-     * Post-condition:  return position and isParked;
-     * <p>
-     * Test-cases: testWhereIs, testMoveForwardOnce, testMoveBackwardOnce, testMoveForwardOOB, testMoveBackwardOOB.
-     */
-    int whereIs();
 
 }

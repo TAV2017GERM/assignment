@@ -1,5 +1,7 @@
 package Controllers;
 
+import Models.CarStatus;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -15,7 +17,7 @@ public class Navigation implements NavigationInterface {
     private boolean drivingForward = false;
 
     public int[] moveForward() {
-        if (whereIs() < 500 && !isParked) {  // Added so that it doesn't move past 500
+        if (CarStatus.whereIs(carStatus) < 500 && !isParked) {  // Added so that it doesn't move past 500
             if (!drivingForward) {
                 drivingForward = true;
                 if (carStatus[1] > 0) carStatus[1] = 1;
@@ -25,22 +27,22 @@ public class Navigation implements NavigationInterface {
             if (isEmpty() == 1) {
                 carStatus[1]++;
                 if (carStatus[1] == 5) {
-                    parkingPlaces[whereIs()] = whereIs();
-                    parkingPlaces[whereIs() - 1] = whereIs();
-                    parkingPlaces[whereIs() - 2] = whereIs();
-                    parkingPlaces[whereIs() - 3] = whereIs();
-                    parkingPlaces[whereIs() - 4] = whereIs();
+                    parkingPlaces[CarStatus.whereIs(carStatus)] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[CarStatus.whereIs(carStatus) - 1] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[CarStatus.whereIs(carStatus) - 2] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[CarStatus.whereIs(carStatus) - 3] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[CarStatus.whereIs(carStatus) - 4] = CarStatus.whereIs(carStatus);
                 }
             } else {
                 carStatus[1] = 0;
-                parkingPlaces[whereIs()] = 0;
+                parkingPlaces[CarStatus.whereIs(carStatus)] = 0;
             }
         }
         return carStatus;       // Return the status of the car
     }
 
     public int[] moveBackward() {
-        if (whereIs() > 1 && !isParked) {     // Added so that it doesn't move past 0
+        if (CarStatus.whereIs(carStatus) > 1 && !isParked) {     // Added so that it doesn't move past 0
             if (drivingForward) {
                 drivingForward = false;
                 if (carStatus[1] > 0) carStatus[1] = 1;
@@ -50,35 +52,35 @@ public class Navigation implements NavigationInterface {
             if (isEmpty() == 1) {
                 carStatus[1]++;
                 if (carStatus[1] == 5) {
-                    parkingPlaces[whereIs()] = whereIs();
-                    parkingPlaces[whereIs() + 1] = whereIs();
-                    parkingPlaces[whereIs() + 2] = whereIs();
-                    parkingPlaces[whereIs() + 3] = whereIs();
-                    parkingPlaces[whereIs() + 4] = whereIs();
+                    parkingPlaces[CarStatus.whereIs(carStatus)] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[CarStatus.whereIs(carStatus) + 1] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[CarStatus.whereIs(carStatus) + 2] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[CarStatus.whereIs(carStatus) + 3] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[CarStatus.whereIs(carStatus) + 4] = CarStatus.whereIs(carStatus);
                 }
             } else {
                 carStatus[1] = 0;
-                parkingPlaces[whereIs()] = 0;
+                parkingPlaces[CarStatus.whereIs(carStatus)] = 0;
             }
         }
         return carStatus;       // Return the status of the car
     }
 
     public void park() {
-        int i = whereIs();                       // Initialize basic counter
-        if (!(parkingPlaces[whereIs()] == 0) && whereIs() != parkingPlaces[whereIs()]) {
-            if (whereIs() < parkingPlaces[whereIs()]) {
-                while (whereIs() != parkingPlaces[whereIs()] && !isParked) {
+        int i = CarStatus.whereIs(carStatus);                       // Initialize basic counter
+        if (!(parkingPlaces[CarStatus.whereIs(carStatus)] == 0) && CarStatus.whereIs(carStatus) != parkingPlaces[CarStatus.whereIs(carStatus)]) {
+            if (CarStatus.whereIs(carStatus) < parkingPlaces[CarStatus.whereIs(carStatus)]) {
+                while (CarStatus.whereIs(carStatus) != parkingPlaces[CarStatus.whereIs(carStatus)] && !isParked) {
                     moveForward();
                 }
-                if (whereIs() == parkingPlaces[whereIs()]) isParked = true;
+                if (CarStatus.whereIs(carStatus) == parkingPlaces[CarStatus.whereIs(carStatus)]) isParked = true;
             } else {
-                while (whereIs() != parkingPlaces[whereIs()] && !isParked) {
+                while (CarStatus.whereIs(carStatus) != parkingPlaces[CarStatus.whereIs(carStatus)] && !isParked) {
                     moveBackward();
                 }
-                if (whereIs() == parkingPlaces[whereIs()]) isParked = true;
+                if (CarStatus.whereIs(carStatus) == parkingPlaces[CarStatus.whereIs(carStatus)]) isParked = true;
             }
-        } else if (whereIs() != 0 && whereIs() == parkingPlaces[whereIs()]) {
+        } else if (CarStatus.whereIs(carStatus) != 0 && CarStatus.whereIs(carStatus) == parkingPlaces[CarStatus.whereIs(carStatus)]) {
             isParked = true;        // Set the parking state of the car to parked (true)
         } else {
             do
@@ -96,12 +98,8 @@ public class Navigation implements NavigationInterface {
     public void unPark() {
         if (isParked) {
             isParked = false;
-            if (whereIs() != 500) moveForward();
+            if (CarStatus.whereIs(carStatus) != 500) moveForward();
         }
-    }
-
-    public int whereIs() {
-        return carStatus[0];    // Return the position of the car
     }
 
     public int isEmpty() {
@@ -115,7 +113,7 @@ public class Navigation implements NavigationInterface {
             total2 += badSensor;
             k++;
         }
-        int i = whereIs();
+        int i = CarStatus.whereIs(carStatus);
         if ((i > 495 && i < 501) || (i > 30 && i < 36)) {       // Hard coded "empty" space 31 - 35 and 495 - 500
             return 1;           // 1 == empty
         }else {
