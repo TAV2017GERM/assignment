@@ -14,16 +14,15 @@ public class CarStatus {
         IS_EMPTY_COUNTER = 0;
     }
 
-    public int whereIs(int[] status) {
-        return status[0];    // Return the position of the car
-    }
+
+
 
     public void setCarPosition(int position) {
         status[0] = position;
     }
 
     public int whereIs() {
-        return status[0];
+        return status[0];   // Return the position of the car
     }
 
     public void registerParkingPlaces(int i) {

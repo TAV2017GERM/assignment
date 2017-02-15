@@ -10,9 +10,9 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author by Group4 on 2017-01-27.
  */
 public class Navigation implements NavigationInterface {
-    private boolean isParked;
+     boolean isParked;
     private boolean drivingForward;
-    private int IS_EMPTY_COUNTER;
+     int IS_EMPTY_COUNTER;
 
 
 
