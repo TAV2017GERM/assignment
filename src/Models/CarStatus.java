@@ -5,6 +5,7 @@ package Models;
  */
 public class CarStatus {
     private int[] status;
+    private int[] parkingPlaces = new int[501];
 
     private int IS_EMPTY_COUNTER;
 
@@ -26,10 +27,17 @@ public class CarStatus {
     }
 
     public void registerParkingPlaces() {
-
+        parkingPlaces[whereIs()] = whereIs();
+        parkingPlaces[whereIs() - 1] = whereIs();
+        parkingPlaces[whereIs() - 2] = whereIs();
+        parkingPlaces[whereIs() - 3] = whereIs();
+        parkingPlaces[whereIs() - 4] = whereIs();
     }
 
     public int fetchParkingPlace(int position) {
         return status[position];
+    }
+    public int[] getCarStatus(){
+        return status;
     }
 }

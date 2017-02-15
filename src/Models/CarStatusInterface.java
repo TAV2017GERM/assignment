@@ -51,4 +51,6 @@ public interface CarStatusInterface {
      */
     int fetchParkingPlace(int position);
 
+    int[] getCarStatus();
+
 }
