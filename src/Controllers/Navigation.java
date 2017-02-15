@@ -84,31 +84,38 @@ public class Navigation implements NavigationInterface {
     public void park() {
         int carPos = cStatus.whereIs();                       // Initialize basic counter
 
-        if (!(cStatus.fetchParkingPlace(carPos) == 0) && carPos != cStatus.fetchParkingPlace(carPos)) {
-            if (carPos < cStatus.fetchParkingPlace(carPos)) {
-                while (cStatus.whereIs() != cStatus.fetchParkingPlace(carPos) && !isParked) {
-                    moveForward();
-                }
-                if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) isParked = true;
-            } else {
-                while (cStatus.whereIs() != cStatus.fetchParkingPlace(carPos) && !isParked) {
-                    moveBackward();
-                }
-                if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) isParked = true;
-            }
-        } else if (cStatus.whereIs() != 0 && cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) {
-            isParked = true;        // Set the parking state of the car to parked (true)
+        if (carPos == 0){
+            moveForward();
+            park();
         } else {
-            do
-            {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
-                moveForward();              // Move the car 1 meter and returns the status of the car
-                if (IS_EMPTY_COUNTER == 5) {    // Check if there is enough spaces (5) to park the car or not
-                    isParked = true;        // Set the parking state of the car to parked (true)
-                    IS_EMPTY_COUNTER = 0;       // Reset the IS_EMPTY_COUNTER of the car
+            if (!(cStatus.fetchParkingPlace(carPos) == 0) && carPos != cStatus.fetchParkingPlace(carPos)) {
+                if (carPos < cStatus.fetchParkingPlace(carPos)) {
+                    while (cStatus.whereIs() != cStatus.fetchParkingPlace(carPos) && !isParked) {
+                        moveForward();
+                    }
+                    if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) isParked = true;
+                } else {
+                    while (cStatus.whereIs() != cStatus.fetchParkingPlace(carPos) && !isParked) {
+                        moveBackward();
+                    }
+                    if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) isParked = true;
                 }
-                carPos++;
-            } while (carPos < 500 && !isParked);
+            } else if (cStatus.whereIs() != 0 && cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) {
+                isParked = true;        // Set the parking state of the car to parked (true)
+            } else {
+                do
+                {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
+                    moveForward();              // Move the car 1 meter and returns the status of the car
+                    if (IS_EMPTY_COUNTER == 5) {    // Check if there is enough spaces (5) to park the car or not
+                        isParked = true;        // Set the parking state of the car to parked (true)
+                        IS_EMPTY_COUNTER = 0;       // Reset the IS_EMPTY_COUNTER of the car
+                    }
+                    carPos++;
+                } while (carPos < 500 && !isParked);
+            }
         }
+
+
     }
 
     public void unPark() {
