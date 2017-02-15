@@ -8,12 +8,12 @@ public class Actuators implements ActuatorsInterface {
 
     @Override
     public int moveForward(int position) {
-        return 0;
+        return position + 1;
     }
 
     @Override
     public int moveBackward(int position) {
-        return 0;
+        return position - 1;
     }
 
 }
