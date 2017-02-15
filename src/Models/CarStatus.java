@@ -42,7 +42,7 @@ public class CarStatus {
     }
 
     public int fetchParkingPlace(int position) {
-        if (position == 0 || position > 500) throw new IllegalArgumentException();
+        if (position < 1 || position > 500) throw new IllegalArgumentException();
         else return status[position];
     }
     public int[] getCarStatus(){

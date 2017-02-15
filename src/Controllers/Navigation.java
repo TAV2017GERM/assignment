@@ -83,6 +83,7 @@ public class Navigation implements NavigationInterface {
 
     public void park() {
         int carPos = cStatus.whereIs();                       // Initialize basic counter
+        System.out.println("car pos" + carPos);
         if (!(cStatus.fetchParkingPlace(carPos) == 0) && carPos != cStatus.fetchParkingPlace(carPos)) {
             if (carPos < cStatus.fetchParkingPlace(carPos)) {
                 while (cStatus.whereIs() != cStatus.fetchParkingPlace(carPos) && !isParked) {
