@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * @author by Group4 on 2017-01-27.
  */
-public class Controller implements ControllerInterface {
+public class Navigation implements NavigationInterface {
     private int POSITION = 0;
     private int IS_EMPTY_COUNTER = 0;
 
