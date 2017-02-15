@@ -12,6 +12,7 @@ public class UI extends  Observable implements Observer{
     private JButton driveFwd;
     private JButton driveBkd;
     private JButton park;
+    private JLabel feed;
 
     @Override
     public void update(Observable observable, Object o) {
