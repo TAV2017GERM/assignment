@@ -6,22 +6,22 @@ package Models;
 public interface USInterface {
 
     /**
-     * Description:
+     * Description: Measure the distance to the nearest object with a range of 0 - 255
      * <p>
-     * Pre-condition:
+     * Pre-condition: N/A
      * <p>
-     * Post-condition:
+     * Post-condition: N/A
      * <p>
      * Test-cases:
      */
     void measureDistance();
 
     /**
-     * Description:
+     * Description: Return the latest distance recorded by messureDistance
      * <p>
-     * Pre-condition:
+     * Pre-condition: N/A
      * <p>
-     * Post-condition:
+     * Post-condition: N/A
      * <p>
      * Test-cases:
      */
