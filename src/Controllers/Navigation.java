@@ -34,9 +34,10 @@ public class Navigation implements NavigationInterface {
         if (cStatus.whereIs() < 500 && !isParked) {  // Added so that it doesn't move past 500
             if (!drivingForward) {
                 drivingForward = true;
-                if (carStatus[1] > 0) carStatus[1] = 1;
-                else carStatus[1] = 0;
+                if (IS_EMPTY_COUNTER > 0) IS_EMPTY_COUNTER = 1;
+                else IS_EMPTY_COUNTER = 0;
             }
+            int i = cStatus.whereIs();
             carStatus[0] += 1;  // Increments the position of the car
             if (isEmpty() == 1) {
                 carStatus[1]++;
