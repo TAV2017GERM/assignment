@@ -9,5 +9,4 @@ public interface ActuatorsInterface {
 
     void runBkd();
 
-    void stop();
 }

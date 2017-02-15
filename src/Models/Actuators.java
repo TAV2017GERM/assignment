@@ -14,8 +14,4 @@ public class Actuators implements ActuatorsInterface{
 
     }
 
-    @Override
-    public void stop() {
-
-    }
 }
