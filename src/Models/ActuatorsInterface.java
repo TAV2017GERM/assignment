@@ -14,7 +14,7 @@ public interface ActuatorsInterface  {
      * <p>
      * Test-cases:
      */
-    void runFwd();
+    int runFwd(int position);
 
     /**
      * Description: Decrease the position of the car
@@ -25,6 +25,6 @@ public interface ActuatorsInterface  {
      * <p>
      * Test-cases:
      */
-    void runBkd();
+    int runBkd(int position);
 
 }
