@@ -1,8 +1,12 @@
 package Models;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Controllers.Navigation Tester.
@@ -11,7 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 1.0
  * @since <pre>Feb 15, 2017</pre>
  */
+@RunWith(MockitoJUnitRunner.class)
 class UltraSonicTest {
+    @Mock
+    UltraSonic failingDispenser;
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+    }
     @Test
     void measureDistance() {
 
