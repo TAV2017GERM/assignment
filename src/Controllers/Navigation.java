@@ -1,6 +1,8 @@
 package Controllers;
 
+import Models.Actuators;
 import Models.CarStatus;
+import Models.UltraSonic;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -15,9 +17,20 @@ public class Navigation implements NavigationInterface {
     private int[] parkingPlaces = new int[501];
     public boolean isParked = false;
     private boolean drivingForward = false;
+    private Actuators actuators;
+    private UltraSonic ultraSonic;
+    private CarStatus cStatus;
+
+    public Navigation() {
+
+        actuators = new Actuators();
+        ultraSonic = new UltraSonic();
+        cStatus = new CarStatus();
+
+    }
 
     public int[] moveForward() {
-        if (CarStatus.whereIs(carStatus) < 500 && !isParked) {  // Added so that it doesn't move past 500
+        if (cStatus.whereIs(carStatus) < 500 && !isParked) {  // Added so that it doesn't move past 500
             if (!drivingForward) {
                 drivingForward = true;
                 if (carStatus[1] > 0) carStatus[1] = 1;
@@ -27,22 +40,22 @@ public class Navigation implements NavigationInterface {
             if (isEmpty() == 1) {
                 carStatus[1]++;
                 if (carStatus[1] == 5) {
-                    parkingPlaces[CarStatus.whereIs(carStatus)] = CarStatus.whereIs(carStatus);
-                    parkingPlaces[CarStatus.whereIs(carStatus) - 1] = CarStatus.whereIs(carStatus);
-                    parkingPlaces[CarStatus.whereIs(carStatus) - 2] = CarStatus.whereIs(carStatus);
-                    parkingPlaces[CarStatus.whereIs(carStatus) - 3] = CarStatus.whereIs(carStatus);
-                    parkingPlaces[CarStatus.whereIs(carStatus) - 4] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus)] = cStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus) - 1] = cStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus) - 2] = cStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus) - 3] = cStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus) - 4] = cStatus.whereIs(carStatus);
                 }
             } else {
                 carStatus[1] = 0;
-                parkingPlaces[CarStatus.whereIs(carStatus)] = 0;
+                parkingPlaces[cStatus.whereIs(carStatus)] = 0;
             }
         }
         return carStatus;       // Return the status of the car
     }
 
     public int[] moveBackward() {
-        if (CarStatus.whereIs(carStatus) > 1 && !isParked) {     // Added so that it doesn't move past 0
+        if (cStatus.whereIs(carStatus) > 1 && !isParked) {     // Added so that it doesn't move past 0
             if (drivingForward) {
                 drivingForward = false;
                 if (carStatus[1] > 0) carStatus[1] = 1;
@@ -52,35 +65,35 @@ public class Navigation implements NavigationInterface {
             if (isEmpty() == 1) {
                 carStatus[1]++;
                 if (carStatus[1] == 5) {
-                    parkingPlaces[CarStatus.whereIs(carStatus)] = CarStatus.whereIs(carStatus);
-                    parkingPlaces[CarStatus.whereIs(carStatus) + 1] = CarStatus.whereIs(carStatus);
-                    parkingPlaces[CarStatus.whereIs(carStatus) + 2] = CarStatus.whereIs(carStatus);
-                    parkingPlaces[CarStatus.whereIs(carStatus) + 3] = CarStatus.whereIs(carStatus);
-                    parkingPlaces[CarStatus.whereIs(carStatus) + 4] = CarStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus)] = cStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus) + 1] = cStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus) + 2] = cStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus) + 3] = cStatus.whereIs(carStatus);
+                    parkingPlaces[cStatus.whereIs(carStatus) + 4] = cStatus.whereIs(carStatus);
                 }
             } else {
                 carStatus[1] = 0;
-                parkingPlaces[CarStatus.whereIs(carStatus)] = 0;
+                parkingPlaces[cStatus.whereIs(carStatus)] = 0;
             }
         }
         return carStatus;       // Return the status of the car
     }
 
     public void park() {
-        int i = CarStatus.whereIs(carStatus);                       // Initialize basic counter
-        if (!(parkingPlaces[CarStatus.whereIs(carStatus)] == 0) && CarStatus.whereIs(carStatus) != parkingPlaces[CarStatus.whereIs(carStatus)]) {
-            if (CarStatus.whereIs(carStatus) < parkingPlaces[CarStatus.whereIs(carStatus)]) {
-                while (CarStatus.whereIs(carStatus) != parkingPlaces[CarStatus.whereIs(carStatus)] && !isParked) {
+        int i = cStatus.whereIs(carStatus);                       // Initialize basic counter
+        if (!(parkingPlaces[cStatus.whereIs(carStatus)] == 0) && cStatus.whereIs(carStatus) != parkingPlaces[cStatus.whereIs(carStatus)]) {
+            if (cStatus.whereIs(carStatus) < parkingPlaces[cStatus.whereIs(carStatus)]) {
+                while (cStatus.whereIs(carStatus) != parkingPlaces[cStatus.whereIs(carStatus)] && !isParked) {
                     moveForward();
                 }
-                if (CarStatus.whereIs(carStatus) == parkingPlaces[CarStatus.whereIs(carStatus)]) isParked = true;
+                if (cStatus.whereIs(carStatus) == parkingPlaces[cStatus.whereIs(carStatus)]) isParked = true;
             } else {
-                while (CarStatus.whereIs(carStatus) != parkingPlaces[CarStatus.whereIs(carStatus)] && !isParked) {
+                while (cStatus.whereIs(carStatus) != parkingPlaces[cStatus.whereIs(carStatus)] && !isParked) {
                     moveBackward();
                 }
-                if (CarStatus.whereIs(carStatus) == parkingPlaces[CarStatus.whereIs(carStatus)]) isParked = true;
+                if (cStatus.whereIs(carStatus) == parkingPlaces[cStatus.whereIs(carStatus)]) isParked = true;
             }
-        } else if (CarStatus.whereIs(carStatus) != 0 && CarStatus.whereIs(carStatus) == parkingPlaces[CarStatus.whereIs(carStatus)]) {
+        } else if (cStatus.whereIs(carStatus) != 0 && cStatus.whereIs(carStatus) == parkingPlaces[cStatus.whereIs(carStatus)]) {
             isParked = true;        // Set the parking state of the car to parked (true)
         } else {
             do
@@ -98,7 +111,7 @@ public class Navigation implements NavigationInterface {
     public void unPark() {
         if (isParked) {
             isParked = false;
-            if (CarStatus.whereIs(carStatus) != 500) moveForward();
+            if (cStatus.whereIs(carStatus) != 500) moveForward();
         }
     }
 
@@ -106,24 +119,24 @@ public class Navigation implements NavigationInterface {
         //simulate random sensor data
         int k = 0;
         int sensor1, badSensor, total1 = 0, total2 = 0, readingToReturn;
-        while (k < 5){
+        while (k < 5) {
             sensor1 = ThreadLocalRandom.current().nextInt(0, 200);
             badSensor = ThreadLocalRandom.current().nextInt(200, 300);
             total1 += sensor1;
             total2 += badSensor;
             k++;
         }
-        int i = CarStatus.whereIs(carStatus);
+        int i = cStatus.whereIs(carStatus);
         if ((i > 495 && i < 501) || (i > 30 && i < 36)) {       // Hard coded "empty" space 31 - 35 and 495 - 500
             return 1;           // 1 == empty
-        }else {
+        } else {
             if ((total1 / 5) > 200) { //sensor1 providing unusable values
                 readingToReturn = total2 / 5;
                 return readingToReturn;
             } else if ((total2 / 5) > 200) {   //sensor2 providing unusable values
                 readingToReturn = total1 / 5;
                 return readingToReturn;
-                        }
+            }
 
             // Store the position of the car
         }
