@@ -71,7 +71,7 @@ public class Navigation implements NavigationInterface {
             if (isEmpty() == 1) {
                 IS_EMPTY_COUNTER++;
                 if (IS_EMPTY_COUNTER == 5) {
-                    cStatus.registerParkingPlaces(1);
+                    cStatus.registerParkingPlaces(-1);
                 }
             } else {
                 IS_EMPTY_COUNTER = 0;
@@ -82,31 +82,31 @@ public class Navigation implements NavigationInterface {
     }
 
     public void park() {
-        int i = cStatus.whereIs();                       // Initialize basic counter
-        if (!(parkingPlaces[cStatus.whereIs()] == 0) && cStatus.whereIs() != parkingPlaces[cStatus.whereIs()]) {
-            if (cStatus.whereIs() < parkingPlaces[cStatus.whereIs()]) {
-                while (cStatus.whereIs() != parkingPlaces[cStatus.whereIs()] && !isParked) {
+        int carPos = cStatus.whereIs();                       // Initialize basic counter
+        if (!(cStatus.fetchParkingPlace(carPos) == 0) && carPos != cStatus.fetchParkingPlace(carPos)) {
+            if (carPos < cStatus.fetchParkingPlace(carPos)) {
+                while (cStatus.whereIs() != cStatus.fetchParkingPlace(carPos) && !isParked) {
                     moveForward();
                 }
-                if (cStatus.whereIs() == parkingPlaces[cStatus.whereIs()]) isParked = true;
+                if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) isParked = true;
             } else {
-                while (cStatus.whereIs() != parkingPlaces[cStatus.whereIs()] && !isParked) {
+                while (cStatus.whereIs() != cStatus.fetchParkingPlace(carPos) && !isParked) {
                     moveBackward();
                 }
-                if (cStatus.whereIs() == parkingPlaces[cStatus.whereIs()]) isParked = true;
+                if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) isParked = true;
             }
-        } else if (cStatus.whereIs() != 0 && cStatus.whereIs() == parkingPlaces[cStatus.whereIs()]) {
+        } else if (cStatus.whereIs() != 0 && cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) {
             isParked = true;        // Set the parking state of the car to parked (true)
         } else {
             do
             {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
                 moveForward();              // Move the car 1 meter and returns the status of the car
-                if (carStatus[1] == 5) {    // Check if there is enough spaces (5) to park the car or not
+                if (IS_EMPTY_COUNTER == 5) {    // Check if there is enough spaces (5) to park the car or not
                     isParked = true;        // Set the parking state of the car to parked (true)
-                    carStatus[1] = 0;       // Reset the IS_EMPTY_COUNTER of the car
+                    IS_EMPTY_COUNTER = 0;       // Reset the IS_EMPTY_COUNTER of the car
                 }
-                i++;
-            } while (i < 500 && !isParked);
+                carPos++;
+            } while (carPos < 500 && !isParked);
         }
     }
 
