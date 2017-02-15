@@ -40,11 +40,7 @@ public class Navigation implements NavigationInterface {
             if (isEmpty() == 1) {
                 carStatus[1]++;
                 if (carStatus[1] == 5) {
-                    parkingPlaces[cStatus.whereIs(carStatus)] = cStatus.whereIs(carStatus);
-                    parkingPlaces[cStatus.whereIs(carStatus) - 1] = cStatus.whereIs(carStatus);
-                    parkingPlaces[cStatus.whereIs(carStatus) - 2] = cStatus.whereIs(carStatus);
-                    parkingPlaces[cStatus.whereIs(carStatus) - 3] = cStatus.whereIs(carStatus);
-                    parkingPlaces[cStatus.whereIs(carStatus) - 4] = cStatus.whereIs(carStatus);
+                    cStatus.registerParkingPlaces();
                 }
             } else {
                 carStatus[1] = 0;
@@ -65,11 +61,7 @@ public class Navigation implements NavigationInterface {
             if (isEmpty() == 1) {
                 carStatus[1]++;
                 if (carStatus[1] == 5) {
-                    parkingPlaces[cStatus.whereIs(carStatus)] = cStatus.whereIs(carStatus);
-                    parkingPlaces[cStatus.whereIs(carStatus) + 1] = cStatus.whereIs(carStatus);
-                    parkingPlaces[cStatus.whereIs(carStatus) + 2] = cStatus.whereIs(carStatus);
-                    parkingPlaces[cStatus.whereIs(carStatus) + 3] = cStatus.whereIs(carStatus);
-                    parkingPlaces[cStatus.whereIs(carStatus) + 4] = cStatus.whereIs(carStatus);
+                    cStatus.registerParkingPlaces();
                 }
             } else {
                 carStatus[1] = 0;
