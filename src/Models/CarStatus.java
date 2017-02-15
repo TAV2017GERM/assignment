@@ -14,7 +14,7 @@ public class CarStatus {
         IS_EMPTY_COUNTER = 0;
     }
 
-    public static int whereIs(int[] status) {
+    public int whereIs(int[] status) {
         return status[0];    // Return the position of the car
     }
 
