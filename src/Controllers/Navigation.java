@@ -14,8 +14,6 @@ public class Navigation implements NavigationInterface {
     private boolean drivingForward;
      int IS_EMPTY_COUNTER;
 
-
-
     private Actuators actuators;
     private UltraSonic ultraSonic;
     private CarStatus cStatus;

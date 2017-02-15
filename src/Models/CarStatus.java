@@ -15,6 +15,7 @@ public class CarStatus {
     }
 
     public int whereIs() {
+        System.out.println("where" + status[0]);
         return status[0];   // Return the position of the car
     }
 
