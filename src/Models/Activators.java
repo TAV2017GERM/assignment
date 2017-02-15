@@ -3,7 +3,7 @@ package Models;
 /**
  * @author Group 4 on 2/13/17.
  */
-public class Engine implements ActuatorsInterface{
+public class Activators implements ActuatorsInterface{
     @Override
     public void runFwd() {
 
