@@ -102,10 +102,7 @@ public class NavigationTest {
 
     }
 
-    @Test
-    public void testIsEmptyMockData() throws Exception{
 
-    }
 
     /**
      * Method: Park()
