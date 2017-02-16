@@ -23,8 +23,6 @@ public class ActuatorsUnitTest {
         actuator = new Actuators();
     }
 
-
-
     @Test
     public void testMoveForward() {
         int pos = 0;

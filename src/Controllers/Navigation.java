@@ -95,11 +95,6 @@ public class Navigation extends Observable implements NavigationInterface, Obser
                         moveForward();
                     }
                     if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) isParked = true;
-                } else {
-                    while (cStatus.whereIs() != cStatus.fetchParkingPlace(carPos) && !isParked) {
-                        moveBackward();
-                    }
-                    if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) isParked = true;
                 }
             } else if (cStatus.whereIs() != 0 && cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) {
                 isParked = true;        // Set the parking state of the car to parked (true)
