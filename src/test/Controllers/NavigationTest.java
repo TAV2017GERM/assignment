@@ -8,15 +8,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.*;
 
 /**
  * Controllers.Controller Tester.
@@ -29,8 +26,11 @@ import static org.mockito.Mockito.times;
 public class NavigationTest {
 
     private Navigation phaseOne;
+
     @Spy
-    private UltraSonic USAgent = Mockito.spy(UltraSonic.class);
+     UltraSonic USAgent = Mockito.spy(UltraSonic.class);
+    @InjectMocks
+     Navigation Navi;
 
     @Before
     public void before() throws Exception {
@@ -255,20 +255,14 @@ public class NavigationTest {
         Assert.assertEquals(false, phaseOne.isParked);
     }
 
-    @Test
-    public void testMock() throws Exception {
-        Mockito.when(USAgent.measureDistance()).thenReturn(100);
-        // Mockito.when(ultraSonic.getDistance()).thenReturn(100);
-
-        Assert.assertEquals(0, phaseOne.isEmpty());
-    }
 
     @Test
     public void testMock2() throws Exception {
-        Mockito.when(USAgent.measureDistance()).thenReturn(0);
-        //  Mockito.when(ultraSonic.getDistance()).thenReturn(2);
-        Mockito.verify(USAgent, times(1)).measureDistance();
-        Assert.assertEquals(0, phaseOne.isEmpty());
+        when(USAgent.getDistance()).thenReturn(0);
+        Assert.assertEquals(0, Navi.isEmpty());
+
+        Mockito.verify(USAgent, times(6)).getDistance();
+
     }
 
 } 
