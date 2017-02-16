@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Group 4 on 2/13/17.
  */
 public class UltraSonic implements UltraSonicInterface {
-    private int distance;
+     int distance;
 
     public UltraSonic() {
         this.distance = 0;
@@ -15,6 +15,7 @@ public class UltraSonic implements UltraSonicInterface {
     @Override
     public void measureDistance() {
         this.distance = ThreadLocalRandom.current().nextInt(0, 300);
+        System.out.println(this.distance+"this");
     }
 
     @Override

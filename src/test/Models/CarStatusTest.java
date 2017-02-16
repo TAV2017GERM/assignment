@@ -44,7 +44,7 @@ public class CarStatusTest {
         carStatus.registerParkingPlaces(1);
         verify(carStatus, times(1)).registerParkingPlaces(1);
 
-        Assert.assertEquals(carStatus.);
+
     }
 
     @Test
