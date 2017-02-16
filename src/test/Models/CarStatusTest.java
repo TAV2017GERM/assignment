@@ -1,5 +1,6 @@
 package Models;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,8 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 /**
  * @author Group4
@@ -38,12 +41,16 @@ public class CarStatusTest {
 
     @Test
     public void testRegisterParkingPlaces() throws Exception {
+        carStatus.registerParkingPlaces(1);
+        verify(carStatus, times(1)).registerParkingPlaces(1);
 
+        Assert.assertEquals(carStatus.);
     }
 
     @Test
     public void testFetchParkingPlace() throws Exception {
-
+        Mockito.when(carStatus.fetchParkingPlace(2)).thenReturn(2);
+        assertEquals(2, carStatus.fetchParkingPlace(2));
     }
 
 }
