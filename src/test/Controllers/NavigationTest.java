@@ -259,7 +259,7 @@ public class NavigationTest {
 
 
     @Test
-    public void testMock2() throws Exception {
+    public void testMockDataSensorsReturn0() throws Exception {
         when(ultraSonic.getDistance()).thenReturn(0);
         when(ultraSonic2.getDistance()).thenReturn(0);
         Assert.assertEquals(0, Navi.isEmpty());
