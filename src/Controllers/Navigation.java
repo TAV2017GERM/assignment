@@ -15,9 +15,9 @@ public class Navigation extends Observable implements NavigationInterface {
     private boolean drivingForward;
     int IS_EMPTY_COUNTER;
 
-    private Actuators actuators;
-    private UltraSonic ultraSonic;
-    private UltraSonic ultraSonic2;
+    Actuators actuators;
+    UltraSonic ultraSonic;
+    UltraSonic ultraSonic2;
     CarStatus cStatus;
 
     public Navigation() {
@@ -130,11 +130,11 @@ public class Navigation extends Observable implements NavigationInterface {
             sensor = ultraSonic.getDistance();
             sensor2 = ultraSonic2.getDistance();
 
-            if (sensor > 0 || sensor < 200) {
+            if (sensor >= 0 && sensor <= 200) {
                 total1 += sensor;
                 counter1++;
             }
-            if (sensor2 > 0 || sensor2 < 200) {
+            if (sensor2 >= 0 && sensor2 <= 200) {
                 total2 += sensor2;
                 counter2++;
             }
