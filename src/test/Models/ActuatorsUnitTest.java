@@ -5,7 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Created by geoffrey on 2017-02-16.
+ * Controllers.Navigation Tester.
+ *
+ * @author Group4
+ * @version 1.0
+ * @since <pre>Feb 16, 2017</pre>
  */
 class ActuatorsUnitTest {
     @Test
