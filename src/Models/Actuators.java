@@ -7,7 +7,7 @@ public class Actuators implements ActuatorsInterface {
 
     @Override
     public int moveForward(int position) {
-        if (position > 1 || position < 500) {
+        if (position >= 0 && position < 500) {
             return position + 1;
         } else {
             throw new IllegalArgumentException();
@@ -16,7 +16,7 @@ public class Actuators implements ActuatorsInterface {
 
     @Override
     public int moveBackward(int position) {
-        if (position > 1 || position < 500) {
+        if (position > 0 && position <= 500) {
             return position - 1;
         } else {
             throw new IllegalArgumentException();
