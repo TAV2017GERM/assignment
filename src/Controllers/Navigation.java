@@ -125,7 +125,7 @@ public class Navigation extends Observable implements NavigationInterface {
     public int isEmpty() {
         //simulate random sensor data
         int k = 0;
-        int sensor, sensor2, counter1 = 0, counter2 = 0, total1= 0, total2= 0;
+        int sensor, sensor2, counter1 = 0, counter2 = 0, total1= 0, total2= 0, mean1, mean2, shared_mean= 0;
         while (k < 5) {   // while loop that discards unusable values
             sensor = ultraSonic.getDistance();
             sensor2 = ultraSonic2.getDistance();
@@ -140,9 +140,16 @@ public class Navigation extends Observable implements NavigationInterface {
             }
             k++;
         }
-        int mean1 = total1 / counter1;  //mean value from valid readings from sensor1
-        int mean2 = total2/counter2; //mean value from valid readings from sensor2
-        int shared_mean = mean1 / mean2;
+
+        if (total1 != 0 && total2 != 0){
+            mean1 = total1 / counter1;  //mean value from valid readings from sensor1
+            mean2 = total2/counter2; //mean value from valid readings from sensor2
+            shared_mean = mean1 / mean2;  // mean value from both sensors
+        }else if (total1 == 0){
+            shared_mean = total2/counter2;
+        }else if(total2 == 0){
+            shared_mean = total1/counter1;
+        }
 
         int i = cStatus.whereIs();
         if ((i > 495 && i < 501) || (i > 30 && i < 36)) {       // Hard coded "empty" space 31 - 35 and 495 - 500
