@@ -26,5 +26,6 @@
     </orderEntry>
     <orderEntry type="library" name="org.mockito:mockito-core:2.7.5" level="project" />
     <orderEntry type="library" name="mockito-core-2.7.5" level="project" />
+    <orderEntry type="library" name="byte-buddy-1.6.5" level="project" />
   </component>
 </module>
