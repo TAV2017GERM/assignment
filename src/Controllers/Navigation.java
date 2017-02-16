@@ -147,7 +147,7 @@ public class Navigation extends Observable implements NavigationInterface {
             shared_mean = mean1 / mean2;  // mean value from both sensors
         }else if (total1 == 0){
             shared_mean = total2/counter2;
-        }else if(total2 == 0){
+        }else{
             shared_mean = total1/counter1;
         }
 
@@ -157,7 +157,7 @@ public class Navigation extends Observable implements NavigationInterface {
         } else {
             if (shared_mean > 150) { //enough place to park
                 return 1;
-            } else  {   //sensor2 providing unusable values
+            } else  {
 
                 return 0;
             }
