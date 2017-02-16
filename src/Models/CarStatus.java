@@ -11,10 +11,8 @@ public class CarStatus {
     }
 
     public void setCarPosition(int position) {
-        if (position > 1 || position < 500) {
+        if (position > 0 && position < 501) {
             status[0] = position;
-        } else {
-            throw new IllegalArgumentException();
         }
     }
 
