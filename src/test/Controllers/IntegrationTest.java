@@ -68,6 +68,7 @@ public class IntegrationTest {
             }
         }
 
+
         for (int l = 500; l > 250; l--){
             if (l > 400 && l < 406){
                 Mockito.when(ultraSonicFront.getDistance()).thenReturn(150);
