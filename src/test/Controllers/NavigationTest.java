@@ -102,6 +102,11 @@ public class NavigationTest {
 
     }
 
+    @Test
+    public void testIsEmptyMockData() throws Exception{
+
+    }
+
     /**
      * Method: Park()
      */
@@ -154,6 +159,35 @@ public class NavigationTest {
 
     }
 
+    @Test
+    public void testParkAfterMoveBackward() throws Exception {
+
+        for (int i = 0; i < 500; i++) {
+            phaseOne.moveForward();
+        }
+        for (int i = phaseOne.cStatus.whereIs(); i != 35; i--) {
+            phaseOne.moveBackward();
+        }
+        phaseOne.park();
+        Assert.assertEquals(35, phaseOne.cStatus.whereIs());
+        Assert.assertEquals(true, phaseOne.isParked);
+
+    }
+    @Test
+    public void testParkWhileCarAtMiddleOfParking() throws Exception{
+        for (int i = 0; i <50; i++) {
+            phaseOne.moveForward();
+        }
+        for (int i = phaseOne.cStatus.whereIs(); i !=32; i--) {
+            phaseOne.moveBackward();
+        }
+
+        phaseOne.park();
+        Assert.assertEquals(true,phaseOne.isParked);
+        Assert.assertEquals(35,phaseOne.cStatus.whereIs());
+    }
+
+
     /**
      * Method: unPark()
      */
@@ -197,46 +231,7 @@ public class NavigationTest {
         Assert.assertEquals(36, phaseOne.cStatus.whereIs());
     }
 
-    @Test
-    public void testParkAfterMoveBackward() throws Exception {
 
-        for (int i = 0; i < 500; i++) {
-            phaseOne.moveForward();
-        }
-        for (int i = phaseOne.cStatus.whereIs(); i != 35; i--) {
-            phaseOne.moveBackward();
-        }
-        phaseOne.park();
-        Assert.assertEquals(35, phaseOne.cStatus.whereIs());
-        Assert.assertEquals(true, phaseOne.isParked);
-
-    }
-    @Test
-    public void testParkWhileCarAtMiddleOfParking() throws Exception{
-        for (int i = 0; i <50; i++) {
-            phaseOne.moveForward();
-        }
-        for (int i = phaseOne.cStatus.whereIs(); i !=32; i--) {
-            phaseOne.moveBackward();
-        }
-        System.out.println(phaseOne.cStatus.whereIs());
-        phaseOne.park();
-        Assert.assertEquals(true,phaseOne.isParked);
-        Assert.assertEquals(35,phaseOne.cStatus.whereIs());
-    }
-    @Test
-    public void testParkWhileCarNextToParking() throws Exception{
-        for (int i = 0; i <50; i++) {
-            phaseOne.moveForward();
-        }
-        for (int i = phaseOne.cStatus.whereIs(); i !=35; i--) {
-            phaseOne.moveBackward();
-        }
-        System.out.println(phaseOne.cStatus.whereIs());
-        phaseOne.park();
-        Assert.assertEquals(true,phaseOne.isParked);
-        Assert.assertEquals(35,phaseOne.cStatus.whereIs());
-    }
     @Test
     public void testFinalTest() {
         phaseOne.park();
