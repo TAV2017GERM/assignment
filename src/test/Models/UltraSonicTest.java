@@ -36,7 +36,7 @@ public class UltraSonicTest {
     }
 
     @Test
-    public void testGetDistanceTest() {
+    public void testGetDistance() {
 
     Mockito.when(USMock.getDistance()).thenReturn(0);
     Assert.assertEquals(0,USMock.getDistance());

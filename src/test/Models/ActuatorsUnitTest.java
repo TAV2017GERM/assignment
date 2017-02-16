@@ -1,8 +1,12 @@
 package Models;
 
-import org.junit.jupiter.api.Test;
+import junit.framework.AssertionFailedError;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.IllegalFormatCodePointException;
+
 
 /**
  * Controllers.Navigation Tester.
@@ -11,14 +15,25 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 1.0
  * @since <pre>Feb 16, 2017</pre>
  */
-class ActuatorsUnitTest {
+public class ActuatorsUnitTest {
+    private Actuators actuator;
+    @Before
+    public void before() throws Exception {
+      actuator = new Actuators();
+    }
+
     @Test
-    void moveForward() {
+    public void testMoveForward() {
+        int pos = 0;
+        for(int i = 0; i<500;i++){
+            pos = actuator.moveForward(pos);
+
+        }
 
     }
 
     @Test
-    void moveBackward() {
+    public void testMoveBackward() {
 
     }
 
