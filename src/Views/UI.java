@@ -38,12 +38,16 @@ public class UI extends Observable implements Observer {
         if (!b) {
             int pos = carStatus[0];
             int parkingPlaces = 0;
+            int places = 0;
             for (int i = 1; i < carStatus.length; i++) {
                 if (carStatus[i] != 0) parkingPlaces += 1;
+                else parkingPlaces = 0;
+
+                if (parkingPlaces == 5) places += 1;
             }
-            feed.setText(" Car is at position " + pos + " found " + parkingPlaces + " parking places.");
+            feed.setText(" Car is at position " + pos + " found " + places + " parking places.");
         } else {
-            feed.setText("                         Parked                                            ");
+            feed.setText("                         Parked                                     ");
         }
     }
 

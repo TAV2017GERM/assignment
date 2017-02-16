@@ -13,7 +13,11 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.Assert.*;
 
 /**
- * Created by mattias on 2017-02-16.
+ * Controllers.Navigation Tester.
+ *
+ * @author Group4
+ * @version 1.0
+ * @since <pre>Feb 16, 2017</pre>
  */
 public class IntegrationTest {
     @Mock private Actuators actuators;
