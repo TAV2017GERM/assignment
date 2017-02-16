@@ -33,7 +33,7 @@ public class ActuatorsUnitTest {
             pos = actuator.moveForward(pos);
 
         }
-
+        Assert.assertEquals(500, pos);
         Assert.assertEquals(500, actuator.moveForward(pos));
 
     }
