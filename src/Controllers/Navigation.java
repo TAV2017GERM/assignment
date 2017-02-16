@@ -150,7 +150,7 @@ public class Navigation extends Observable implements NavigationInterface {
         if (total1 != 0 && total2 != 0) {
             mean1 = total1 / counter1;  //mean value from valid readings from sensor1
             mean2 = total2 / counter2; //mean value from valid readings from sensor2
-            shared_mean = mean1 / mean2;  // mean value from both sensors
+            shared_mean = (mean1 + mean2) / 2;  // mean value from both sensors
         } else if (total1 == 0 && total2 == 0) {
             return 0;
         } else if (total1 == 0) {
