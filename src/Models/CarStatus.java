@@ -22,20 +22,23 @@ public class CarStatus implements CarStatusInterface{
 
     public void registerParkingPlaces(int i) {
 
-        if (i == 1) {
+        if (i == 1 && status[whereIs()] == 0) {
             status[whereIs()] = whereIs();
             status[whereIs() - 1] = whereIs();
             status[whereIs() - 2] = whereIs();
             status[whereIs() - 3] = whereIs();
             status[whereIs() - 4] = whereIs();
-        } else if (i == -1){
+
+        } else if (i == -1 && status[whereIs()] == 0){
             status[whereIs()] = whereIs();
             status[whereIs() + 1] = whereIs();
             status[whereIs() + 2] = whereIs();
             status[whereIs() + 3] = whereIs();
             status[whereIs() + 4] = whereIs();
-        } else{
+
+        } else if (i == 0){
             status[whereIs()] = 0;
+
         }
     }
 

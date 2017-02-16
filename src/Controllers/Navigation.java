@@ -36,6 +36,7 @@ public class Navigation extends Observable implements NavigationInterface {
         if (cStatus.whereIs() < 500 && !isParked) {  // Added so that it doesn't move past 500
             if (!drivingForward) {
                 drivingForward = true;
+
                 if (IS_EMPTY_COUNTER > 0) IS_EMPTY_COUNTER = 1;
                 else IS_EMPTY_COUNTER = 0;
             }
@@ -61,6 +62,7 @@ public class Navigation extends Observable implements NavigationInterface {
         if (cStatus.whereIs() > 1 && !isParked) {     // Added so that it doesn't move past 0
             if (drivingForward) {
                 drivingForward = false;
+
                 if (IS_EMPTY_COUNTER > 0) IS_EMPTY_COUNTER = 1;
                 else IS_EMPTY_COUNTER = 0;
             }
@@ -134,7 +136,9 @@ public class Navigation extends Observable implements NavigationInterface {
 
         while (k < 5) {   // while loop that discards unusable values
             sensor = ultraSonic.getDistance();
+
             sensor2 = ultraSonic2.getDistance();
+
 
             if (sensor >= 0 && sensor <= 200) {
                 total1 += sensor;
@@ -151,6 +155,7 @@ public class Navigation extends Observable implements NavigationInterface {
             mean1 = total1 / counter1;  //mean value from valid readings from sensor1
             mean2 = total2 / counter2; //mean value from valid readings from sensor2
             shared_mean = (mean1 + mean2) / 2;  // mean value from both sensors
+
         } else if (total1 == 0 && total2 == 0) {
             return 0;
         } else if (total1 == 0) {
