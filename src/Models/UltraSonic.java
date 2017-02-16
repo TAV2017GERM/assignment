@@ -9,7 +9,7 @@ public class UltraSonic implements UltraSonicInterface {
      int distance;
 
     public UltraSonic() {
-        this.distance = 0;
+        this.distance = -1;
     }
 
     @Override
