@@ -23,10 +23,9 @@ public class ActuatorsUnitTest {
         actuator = new Actuators();
     }
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
-    @Test(expected = IllegalArgumentException.class)
+
+    @Test
     public void testMoveForward() {
         int pos = 0;
         for (int i = 0; i < 500; i++) {
@@ -38,7 +37,7 @@ public class ActuatorsUnitTest {
 
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testMoveBackward() {
         int pos = 0;
         pos = actuator.moveBackward(pos);
