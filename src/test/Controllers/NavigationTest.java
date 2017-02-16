@@ -27,8 +27,10 @@ public class NavigationTest {
 
     private Navigation phaseOne;
 
-    @Spy
-     UltraSonic USAgent = Mockito.spy(UltraSonic.class);
+    @Mock
+     UltraSonic ultraSonic;
+    @Mock
+    UltraSonic ultraSonic2;
     @InjectMocks
      Navigation Navi;
 
@@ -258,10 +260,11 @@ public class NavigationTest {
 
     @Test
     public void testMock2() throws Exception {
-        when(USAgent.getDistance()).thenReturn(0);
+        when(ultraSonic.getDistance()).thenReturn(0);
+        when(ultraSonic2.getDistance()).thenReturn(0);
         Assert.assertEquals(0, Navi.isEmpty());
 
-        Mockito.verify(USAgent, times(6)).getDistance();
+        Mockito.verify(ultraSonic, times(5)).getDistance();
 
     }
 
