@@ -13,7 +13,7 @@ public interface CarStatusInterface {
      * <p>
      * Post-condition: array[0] updated;
      * <p>
-     * Test-cases:
+     * Test-cases: testSetCarPosition
      */
     void setCarPosition(int position);
 
@@ -36,7 +36,7 @@ public interface CarStatusInterface {
      * <p>
      * Post-condition: parkingPlaces array updated;
      * <p>
-     * Test-cases:
+     * Test-cases: testRegisterParkingPlaces
      */
     void registerParkingPlaces(int i);
 
@@ -47,10 +47,19 @@ public interface CarStatusInterface {
      * <p>
      * Post-condition: return parking place availability;
      * <p>
-     * Test-cases:
+     * Test-cases: testFetchParkingPlace
      */
     int fetchParkingPlace(int position);
 
+    /**
+     * Description: Returns the current status of the car
+     * <p>
+     * Pre-condition: status array instantiated and populated;
+     * <p>
+     * Post-condition: returns carStatus array;
+     * <p>
+     * Test-cases: testGetCarStatus
+     */
     int[] getCarStatus();
 
 }

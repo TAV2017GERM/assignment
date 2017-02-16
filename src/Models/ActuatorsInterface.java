@@ -12,7 +12,7 @@ public interface ActuatorsInterface  {
      * <p>
      * Post-condition: position <= 500
      * <p>
-     * Test-cases:
+     * Test-cases: testMoveForward, testRunFwd
      */
     int moveForward(int position);
 
@@ -23,7 +23,7 @@ public interface ActuatorsInterface  {
      * <p>
      * Post-condition: position =< 0
      * <p>
-     * Test-cases:
+     * Test-cases: testMoveBackward, testRunBkd
      */
     int moveBackward(int position);
 
