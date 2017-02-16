@@ -160,7 +160,7 @@ public class Navigation extends Observable implements NavigationInterface {
         }
 
 
-        if (shared_mean > 150) { //enough place to park
+        if (shared_mean >= 150) { //enough place to park
             return 1;
         } else {
             return 0;
