@@ -39,7 +39,7 @@ public class UltraSonicTest {
         USMock.measureDistance();
         Mockito.verify(USMock, times(1)).measureDistance();
 
-        Assert.assertTrue(0<=USMock.measureDistance()&&USMock.measureDistance()<=300);
+        Assert.assertTrue((0<=USMock.measureDistance()&&USMock.measureDistance()<=300)||USMock.measureDistance()==-1);
 
     }
 

@@ -10,7 +10,7 @@ import java.util.Observer;
 /**
  * @author by Group4 on 2017-01-27.
  */
-public class Navigation extends Observable implements NavigationInterface, Observer {
+public class Navigation extends Observable implements NavigationInterface {
     boolean isParked;
     private boolean drivingForward;
     int IS_EMPTY_COUNTER;
@@ -28,7 +28,6 @@ public class Navigation extends Observable implements NavigationInterface, Obser
         cStatus = new CarStatus();
 
     }
-
 
 
     public int[] moveForward() {
@@ -149,9 +148,9 @@ public class Navigation extends Observable implements NavigationInterface, Obser
         }
         return 0;
     }
-
-    @Override
-    public void update(Observable observable, Object o) {
-
-    }
+//      Method is intended for UI class, it is not used yet.
+//    @Override
+//    public void update(Observable observable, Object o) {
+//
+//    }
 }

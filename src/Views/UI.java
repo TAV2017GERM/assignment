@@ -18,7 +18,7 @@ public class UI extends Observable implements Observer {
 
     public UI() {
         Navigation navigation = new Navigation();
-        this.addObserver(navigation);
+      //  this.addObserver(navigation);
         navigation.addObserver(this);
         park.addActionListener(actionEvent -> {
             setChanged();
