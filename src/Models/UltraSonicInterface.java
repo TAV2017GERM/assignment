@@ -12,7 +12,7 @@ public interface UltraSonicInterface {
      * <p>
      * Post-condition: N/A
      * <p>
-     * Test-cases: testMeasureDistance
+     * Test-cases: testMeasureDistance, testMockDataSensorsReturn0
      */
     int measureDistance();
 
