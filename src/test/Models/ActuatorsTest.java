@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 public class ActuatorsTest {
     @Mock
     private
-    Actuators actu;
+    Actuators actuators;
     @Before
     public void setActu() throws Exception{
         MockitoAnnotations.initMocks(this);
@@ -31,18 +31,18 @@ public class ActuatorsTest {
 
     @Test
     public void testRunFwd() throws Exception {
-        Mockito.when(actu.moveForward(0)).thenReturn(1);
-        Mockito.when(actu.moveForward(500)).thenReturn(500);
-        assertEquals(1, actu.moveForward(0));
-        assertEquals(500, actu.moveForward(500));
+        Mockito.when(actuators.moveForward(0)).thenReturn(1);
+        Mockito.when(actuators.moveForward(500)).thenReturn(500);
+        assertEquals(1, actuators.moveForward(0));
+        assertEquals(500, actuators.moveForward(500));
     }
 
     @Test
     public void testRunBkd() throws Exception {
-        Mockito.when(actu.moveBackward(0)).thenReturn(0);
-        Mockito.when(actu.moveBackward(1)).thenReturn(0);
-        assertEquals(0, actu.moveBackward(0));
-        assertEquals(0, actu.moveBackward(1));
+        Mockito.when(actuators.moveBackward(0)).thenReturn(0);
+        Mockito.when(actuators.moveBackward(1)).thenReturn(0);
+        assertEquals(0, actuators.moveBackward(0));
+        assertEquals(0, actuators.moveBackward(1));
     }
 
 }
