@@ -38,7 +38,7 @@ public interface CarStatusInterface {
      * <p>
      * Test-cases:
      */
-    void registerParkingPlaces();
+    void registerParkingPlaces(int i);
 
     /**
      * Description: Returns the current status of parking place availability

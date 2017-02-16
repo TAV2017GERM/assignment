@@ -3,7 +3,7 @@ package Models;
 /**
  * @author Group 4 on 2/13/17.
  */
-public class CarStatus {
+public class CarStatus implements CarStatusInterface{
     private int[] status;
 
     public CarStatus() {

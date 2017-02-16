@@ -9,7 +9,11 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.lang.reflect.Array;
+
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
@@ -51,6 +55,14 @@ public class CarStatusTest {
     public void testFetchParkingPlace() throws Exception {
         Mockito.when(carStatus.fetchParkingPlace(2)).thenReturn(2);
         assertEquals(2, carStatus.fetchParkingPlace(2));
+    }
+    @Test
+    public void testGetCarStatus() throws Exception {
+        carStatus.getCarStatus();
+        int[] dummy = new int[1];
+        doReturn(dummy).when(carStatus).getCarStatus();
+        verify(carStatus, times(1)).getCarStatus();
+        Assert.assertEquals(dummy,carStatus.getCarStatus());
     }
 
 }

@@ -1,15 +1,22 @@
 package Controllers;
 
 
-
-
+import Models.CarStatus;
+import Models.UltraSonic;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 
 
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.mockito.Mockito.times;
 
 /**
  * Controllers.Controller Tester.
@@ -18,14 +25,17 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  * @version 1.0
  * @since <pre>Jan 30, 2017</pre>
  */
+@RunWith(MockitoJUnitRunner.class)
 public class NavigationTest {
 
     private Navigation phaseOne;
+    @Spy
+    private UltraSonic USAgent = Mockito.spy(UltraSonic.class);
 
     @Before
     public void before() throws Exception {
         phaseOne = new Navigation();
-
+        MockitoAnnotations.initMocks(this);
     }
 
     @After
@@ -92,7 +102,7 @@ public class NavigationTest {
     @Test
     public void testMoveForwardParkStatus() throws Exception {
         int i[] = phaseOne.moveForward();
-        Assert.assertEquals( 0, i[1]);
+        Assert.assertEquals(0, i[1]);
     }
 
     @Test
@@ -101,7 +111,6 @@ public class NavigationTest {
         Assert.assertEquals(0, i[1]);
 
     }
-
 
 
     /**
@@ -170,18 +179,19 @@ public class NavigationTest {
         Assert.assertEquals(true, phaseOne.isParked);
 
     }
+
     @Test
-    public void testParkWhileCarAtMiddleOfParking() throws Exception{
-        for (int i = 0; i <50; i++) {
+    public void testParkWhileCarAtMiddleOfParking() throws Exception {
+        for (int i = 0; i < 50; i++) {
             phaseOne.moveForward();
         }
-        for (int i = phaseOne.cStatus.whereIs(); i !=32; i--) {
+        for (int i = phaseOne.cStatus.whereIs(); i != 32; i--) {
             phaseOne.moveBackward();
         }
 
         phaseOne.park();
-        Assert.assertEquals(true,phaseOne.isParked);
-        Assert.assertEquals(35,phaseOne.cStatus.whereIs());
+        Assert.assertEquals(true, phaseOne.isParked);
+        Assert.assertEquals(35, phaseOne.cStatus.whereIs());
     }
 
 
@@ -243,6 +253,22 @@ public class NavigationTest {
         phaseOne.unPark();
         Assert.assertEquals(500, phaseOne.cStatus.whereIs());
         Assert.assertEquals(false, phaseOne.isParked);
+    }
+
+    @Test
+    public void testMock() throws Exception {
+        Mockito.when(USAgent.measureDistance()).thenReturn(100);
+        // Mockito.when(ultraSonic.getDistance()).thenReturn(100);
+
+        Assert.assertEquals(0, phaseOne.isEmpty());
+    }
+
+    @Test
+    public void testMock2() throws Exception {
+        Mockito.when(USAgent.measureDistance()).thenReturn(0);
+        //  Mockito.when(ultraSonic.getDistance()).thenReturn(2);
+        Mockito.verify(USAgent, times(1)).measureDistance();
+        Assert.assertEquals(0, phaseOne.isEmpty());
     }
 
 } 
