@@ -28,6 +28,8 @@ public class Navigation implements NavigationInterface {
 
     }
 
+
+
     public int[] moveForward() {
         if (cStatus.whereIs() < 500 && !isParked) {  // Added so that it doesn't move past 500
             if (!drivingForward) {

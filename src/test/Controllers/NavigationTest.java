@@ -2,10 +2,13 @@ package Controllers;
 
 
 
+import Models.Actuators;
+import Models.UltraSonic;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
@@ -19,7 +22,6 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 public class NavigationTest {
 
     private Navigation phaseOne;
-
 
     @Before
     public void before() throws Exception {
