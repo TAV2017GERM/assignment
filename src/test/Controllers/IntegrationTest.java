@@ -40,9 +40,6 @@ public class IntegrationTest {
         Mockito.when(actuators.moveForward(500)).thenReturn(500);
         Mockito.when(ultraSonicFront.getDistance()).thenReturn(100);
         Mockito.when(ultraSonicBack.getDistance()).thenReturn(100);
-
-
-
     }
 
 }

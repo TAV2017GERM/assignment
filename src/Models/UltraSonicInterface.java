@@ -14,7 +14,7 @@ public interface UltraSonicInterface {
      * <p>
      * Test-cases:
      */
-    void measureDistance();
+    int measureDistance();
 
     /**
      * Description: Return the latest distance recorded by messureDistance

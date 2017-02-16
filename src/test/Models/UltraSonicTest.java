@@ -37,8 +37,8 @@ public class UltraSonicTest {
     public void testMeasureDistance() {
 
         USMock.measureDistance();
-
         Mockito.verify(USMock, times(1)).measureDistance();
+
         UltraSonic us = new UltraSonic();
         us.distance = -1;
         us.measureDistance();
