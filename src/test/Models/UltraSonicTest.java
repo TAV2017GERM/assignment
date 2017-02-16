@@ -9,7 +9,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.times;
 
 
@@ -30,18 +29,20 @@ public class UltraSonicTest {
     @Before
     public void setUp() throws Exception {
 
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(USMock);
 
     }
 
     @Test
     public void testMeasureDistance() {
-        int i = USMock.distance;
 
         USMock.measureDistance();
-        Mockito.verify(USMock, times(1)).measureDistance();
-        Assert.assertNotEquals(-1, i);
 
+        Mockito.verify(USMock, times(1)).measureDistance();
+        UltraSonic us = new UltraSonic();
+        us.distance = -1;
+        us.measureDistance();
+        Assert.assertNotEquals(-1,us.distance);
     }
 
     @Test
