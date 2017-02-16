@@ -25,7 +25,7 @@ public class ActuatorsTest {
     private
     Actuators actuators;
     @Before
-    public void setActu() throws Exception{
+    public void setActuators() throws Exception{
         MockitoAnnotations.initMocks(this);
     }
 
