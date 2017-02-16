@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.UI">
+  <grid id="27dc6" binding="panelMain" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="543" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-16777216"/>
+      <foreground color="-1"/>
+      <preferredSize width="543" height="543"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="4cf1e" class="javax.swing.JButton" binding="park">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
+          <hideActionText value="false"/>
+          <horizontalAlignment value="0"/>
+          <maximumSize width="65" height="65"/>
+          <minimumSize width="65" height="65"/>
+          <opaque value="true"/>
+          <preferredSize width="65" height="65"/>
+          <text value="Park"/>
+        </properties>
+      </component>
+      <component id="dea0b" class="javax.swing.JButton" binding="driveBkd">
+        <constraints border-constraint="West"/>
+        <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
+          <label value="Reverse"/>
+          <text value="Reverse"/>
+        </properties>
+      </component>
+      <component id="ddde0" class="javax.swing.JButton" binding="driveFwd">
+        <constraints border-constraint="East"/>
+        <properties>
+          <actionCommand value=" Drive"/>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
+          <label value="  Drive  "/>
+          <maximumSize width="90" height="39"/>
+          <minimumSize width="90" height="39"/>
+          <preferredSize width="90" height="39"/>
+          <text value="  Drive  "/>
+        </properties>
+      </component>
+      <component id="e4fe8" class="javax.swing.JLabel" binding="feed">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
+          <horizontalAlignment value="10"/>
+          <horizontalTextPosition value="11"/>
+          <text value="  Car is at position X and found X parking places."/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

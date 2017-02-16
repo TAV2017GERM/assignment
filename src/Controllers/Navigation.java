@@ -4,19 +4,20 @@ import Models.Actuators;
 import Models.CarStatus;
 import Models.UltraSonic;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * @author by Group4 on 2017-01-27.
  */
-public class Navigation implements NavigationInterface {
-     boolean isParked;
-     private boolean drivingForward;
-     int IS_EMPTY_COUNTER;
+public class Navigation extends Observable implements NavigationInterface, Observer {
+    boolean isParked;
+    private boolean drivingForward;
+    int IS_EMPTY_COUNTER;
 
     private Actuators actuators;
     private UltraSonic ultraSonic;
-   CarStatus cStatus;
+    CarStatus cStatus;
 
     public Navigation() {
         IS_EMPTY_COUNTER = 0;
@@ -59,7 +60,7 @@ public class Navigation implements NavigationInterface {
         if (cStatus.whereIs() > 1 && !isParked) {     // Added so that it doesn't move past 0
             if (drivingForward) {
                 drivingForward = false;
-                if (IS_EMPTY_COUNTER > 0)IS_EMPTY_COUNTER = 1;
+                if (IS_EMPTY_COUNTER > 0) IS_EMPTY_COUNTER = 1;
                 else IS_EMPTY_COUNTER = 0;
             }
 
@@ -84,7 +85,7 @@ public class Navigation implements NavigationInterface {
     public void park() {
         int carPos = cStatus.whereIs();                       // Initialize basic counter
 
-        if (carPos == 0){
+        if (carPos == 0) {
             moveForward();
             park();
         } else {
@@ -152,5 +153,10 @@ public class Navigation implements NavigationInterface {
             }
         }
         return 0;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
     }
 }
