@@ -125,7 +125,13 @@ public class Navigation extends Observable implements NavigationInterface {
     public int isEmpty() {
         //simulate random sensor data
         int k = 0;
-        int sensor, sensor2, counter1 = 0, counter2 = 0, total1= 0, total2= 0, mean1, mean2, shared_mean= 0;
+        int sensor, sensor2, counter1 = 0, counter2 = 0, total1 = 0, total2 = 0, mean1, mean2, shared_mean = 0;
+        int i = cStatus.whereIs();
+
+        if ((i > 495 && i < 501) || (i > 30 && i < 36)) {       // Hard coded "empty" space 31 - 35 and 495 - 500
+            return 1;           // 1 == empty
+        }
+
         while (k < 5) {   // while loop that discards unusable values
             sensor = ultraSonic.getDistance();
             sensor2 = ultraSonic2.getDistance();
@@ -141,28 +147,26 @@ public class Navigation extends Observable implements NavigationInterface {
             k++;
         }
 
-        if (total1 != 0 && total2 != 0){
+        if (total1 != 0 && total2 != 0) {
             mean1 = total1 / counter1;  //mean value from valid readings from sensor1
-            mean2 = total2/counter2; //mean value from valid readings from sensor2
+            mean2 = total2 / counter2; //mean value from valid readings from sensor2
             shared_mean = mean1 / mean2;  // mean value from both sensors
-        }else if (total1 == 0){
-            shared_mean = total2/counter2;
-        }else{
-            shared_mean = total1/counter1;
+        } else if (total1 == 0 && total2 == 0) {
+            return 0;
+        } else if (total1 == 0) {
+            shared_mean = total2 / counter2;
+        } else {
+            shared_mean = total1 / counter1;
         }
 
-        int i = cStatus.whereIs();
-        if ((i > 495 && i < 501) || (i > 30 && i < 36)) {       // Hard coded "empty" space 31 - 35 and 495 - 500
-            return 1;           // 1 == empty
-        } else {
-            if (shared_mean > 150) { //enough place to park
-                return 1;
-            } else  {
 
-                return 0;
-            }
+        if (shared_mean > 150) { //enough place to park
+            return 1;
+        } else {
+            return 0;
         }
     }
+
 //      Method is intended for UI class, it is not used yet.
 //    @Override
 //    public void update(Observable observable, Object o) {
