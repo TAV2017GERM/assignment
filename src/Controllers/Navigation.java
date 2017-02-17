@@ -87,6 +87,7 @@ public class Navigation extends Observable implements NavigationInterface {
                 if (IS_EMPTY_COUNTER == 5) {
                     cStatus.registerParkingPlaces(-1);
                 }
+
             } else {
                 IS_EMPTY_COUNTER = 0;
                 cStatus.registerParkingPlaces(0);
