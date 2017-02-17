@@ -245,46 +245,46 @@ public class IntegrationTest {
         assertEquals(500, phaseOne.cStatus.whereIs());
 
 
-//        // 8
-//        for (int j = 500; j > 0; j--) {
-//
-//            if (j == 1) {
-//                Mockito.when(actuators.moveBackward(j)).thenReturn(j);
-//            } else {
-//                Mockito.when(actuators.moveBackward(j)).thenReturn(j - 1);
-//            }
-//
-//            if ((j - 1) > 50 && (j - 1) < 56) {
-//                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
-//                Mockito.when(ultraSonic2.getDistance()).thenReturn(150);
-//                phaseOne.moveBackward();
-//            } else if ((j - 1) == 40) {
-//                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
-//                Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
-//                phaseOne.moveBackward();
-//            } else if ((j - 1) == 41) {
-//                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
-//                Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
-//                phaseOne.moveBackward();
-//            } else if ((j - 1) == 42) {
-//                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
-//                Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
-//                phaseOne.moveBackward();
-//            } else if (((j - 1) > 495 && (j - 1) < 501) || ((j - 1) > 30 && (j - 1) < 36)) {
-//                doReturn(0).when(spy).isEmpty();
-//                phaseOne.moveBackward();
-//            }else {
-//                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
-//                Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
-//                phaseOne.moveBackward();
-//            }
-//        }
-//
-//        // 9
-//        phaseOne.park();
-//
-//        assertEquals(true, phaseOne.isParked);
-//        assertEquals(500, phaseOne.cStatus.whereIs());
+        // 8
+        for (int j = 500; j > 0; j--) {
+
+            if (j == 1) {
+                Mockito.when(actuators.moveBackward(j)).thenReturn(j);
+            } else {
+                Mockito.when(actuators.moveBackward(j)).thenReturn(j - 1);
+            }
+
+            if ((j - 1) > 50 && (j - 1) < 56) {
+                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
+                Mockito.when(ultraSonic2.getDistance()).thenReturn(150);
+                phaseOne.moveBackward();
+            } else if ((j - 1) == 40) {
+                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
+                Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
+                phaseOne.moveBackward();
+            } else if ((j - 1) == 41) {
+                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
+                Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
+                phaseOne.moveBackward();
+            } else if ((j - 1) == 42) {
+                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
+                Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
+                phaseOne.moveBackward();
+            } else if (((j - 1) > 495 && (j - 1) < 501) || ((j - 1) > 30 && (j - 1) < 36)) {
+                doReturn(0).when(spy).isEmpty();
+                phaseOne.moveBackward();
+            }else {
+                Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
+                Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
+                phaseOne.moveBackward();
+            }
+        }
+
+        // 9
+        phaseOne.park();
+
+        assertEquals(true, phaseOne.isParked);
+        assertEquals(500, phaseOne.cStatus.whereIs());
 
     }
 
