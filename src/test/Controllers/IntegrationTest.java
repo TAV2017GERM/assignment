@@ -36,6 +36,23 @@ public class IntegrationTest {
 
     }
 
+    /**
+     * Scenario:
+     *      1.  Initialize automated parking assistance to park at the nearest parking place. At 35m
+     *      2.  Unpark the car from that parking place to 36m.
+     *      3.  Move the car to the end of the road. To 500m.
+     *      4.  Back the car to 491m.
+     *      5.  Move the car one step forward to 492m.
+     *      6.  Back the car to 491m.
+     *      7.  Move the car to 500m.
+     *      8.  Move the car to 401m.
+     *      9.  Initialize automated parking assistance to park at the nearest parking place. At 405m
+     *      10. Unpark the car from that parking place to 36m.
+     *      11. Move the car to 500m.
+     *      12. Initialize automated parking assistance to park at the nearest parking place. At 500m
+     *
+     * @throws Exception
+     */
     @Test
     public void testFullIntegrationScenario() throws Exception {
         for (int i = 0; i < 501; i++) {
@@ -46,15 +63,18 @@ public class IntegrationTest {
             }
         }
 
+        // 1
         phaseOne.park();
         assertEquals(35, phaseOne.cStatus.whereIs());
         assertEquals(true, phaseOne.isParked);
 
+        // 2
         phaseOne.unPark();
 
         assertEquals(36, phaseOne.cStatus.whereIs());
         assertEquals(false, phaseOne.isParked);
 
+        // 3
         for (int i = 36; i < 501; i++) {
 
             if ((i + 1) > 400 && (i + 1) < 406 || (i + 1) > 0 && (i + 1) < 6) {
@@ -80,6 +100,7 @@ public class IntegrationTest {
             }
         }
 
+        // 4
         for (int k = 500; k > 491; k--) {
             Mockito.when(ultraSonic.getDistance()).thenReturn(10);
             Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
@@ -87,13 +108,14 @@ public class IntegrationTest {
             phaseOne.moveBackward();
         }
 
+        // 5
         assertEquals(491, phaseOne.cStatus.whereIs());
         Mockito.when(ultraSonic.getDistance()).thenReturn(10);
         Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
         Mockito.when(actuators.moveForward(491)).thenReturn(492);
         phaseOne.moveForward();
 
-
+        // 6
         assertEquals(492, phaseOne.cStatus.whereIs());
         Mockito.when(ultraSonic.getDistance()).thenReturn(10);
         Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
@@ -102,6 +124,7 @@ public class IntegrationTest {
 
         assertEquals(491, phaseOne.cStatus.whereIs());
 
+        // 7
         for (int l = 491; l < 501; l++) {
             Mockito.when(ultraSonic.getDistance()).thenReturn(10);
             Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
@@ -111,6 +134,7 @@ public class IntegrationTest {
 
         assertEquals(500, phaseOne.cStatus.whereIs());
 
+        // 8
         for (int j = 500; j > 401; j--) {
 
             if (j == 1) {
@@ -130,16 +154,19 @@ public class IntegrationTest {
             }
         }
 
+        // 9
         phaseOne.park();
 
         assertEquals(true, phaseOne.isParked);
         assertEquals(405, phaseOne.cStatus.whereIs());
 
+        // 10
         phaseOne.unPark();
 
         assertEquals(false, phaseOne.isParked);
         assertEquals(406, phaseOne.cStatus.whereIs());
 
+        // 11
         for (int l = 406; l < 501; l++) {
             Mockito.when(ultraSonic.getDistance()).thenReturn(10);
             Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
@@ -147,6 +174,7 @@ public class IntegrationTest {
             phaseOne.moveForward();
         }
 
+        // 12
         phaseOne.park();
 
         assertEquals(true, phaseOne.isParked);
@@ -155,6 +183,22 @@ public class IntegrationTest {
 
     }
 
+    /**
+     * Scenario:
+     *      1.  Initialize automated parking assistance to park at the nearest parking place. At 35m
+     *      2.  Unpark the car from that parking place to 36m.
+     *      3.  Move the car to the end of the road. To 500m.
+     *      4.  Back the car to 491m.
+     *      5.  Move the car one step forward to 492m.
+     *      6.  Back the car to 491m.
+     *      7.  Move the car to 500m.
+     *      8.  Move the car to 401m.
+     *      9.  Initialize automated parking assistance to park at the nearest parking place. At 405m
+     *      10. Unpark the car from that parking place to 36m.
+     *      11. Move the car to 500m.
+     *
+     * @throws Exception
+     */
     @Test
     public void testFullIntegrationScenarioWithOneFailingSensor() throws Exception {
         for (int i = 0; i < 501; i++) {
@@ -165,15 +209,18 @@ public class IntegrationTest {
             }
         }
 
+        // 1
         phaseOne.park();
         assertEquals(35, phaseOne.cStatus.whereIs());
         assertEquals(true, phaseOne.isParked);
 
+        // 2
         phaseOne.unPark();
 
         assertEquals(36, phaseOne.cStatus.whereIs());
         assertEquals(false, phaseOne.isParked);
 
+        // 3
         for (int i = 36; i < 501; i++) {
 
             if ((i + 1) > 400 && (i + 1) < 406 || (i + 1) > 0 && (i + 1) < 6) {
@@ -199,6 +246,7 @@ public class IntegrationTest {
             }
         }
 
+        // 4
         for (int k = 500; k > 491; k--) {
             Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
             Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
@@ -206,13 +254,14 @@ public class IntegrationTest {
             phaseOne.moveBackward();
         }
 
+        // 5
         assertEquals(491, phaseOne.cStatus.whereIs());
         Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
         Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
         Mockito.when(actuators.moveForward(491)).thenReturn(492);
         phaseOne.moveForward();
 
-
+        // 6
         assertEquals(492, phaseOne.cStatus.whereIs());
         Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
         Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
@@ -221,6 +270,7 @@ public class IntegrationTest {
 
         assertEquals(491, phaseOne.cStatus.whereIs());
 
+        // 7
         for (int l = 491; l < 501; l++) {
             Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
             Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
@@ -230,6 +280,7 @@ public class IntegrationTest {
 
         assertEquals(500, phaseOne.cStatus.whereIs());
 
+        // 8
         for (int j = 500; j > 401; j--) {
 
             if (j == 1) {
@@ -249,16 +300,19 @@ public class IntegrationTest {
             }
         }
 
+        // 9
         phaseOne.park();
 
         assertEquals(true, phaseOne.isParked);
         assertEquals(405, phaseOne.cStatus.whereIs());
 
+        // 10
         phaseOne.unPark();
 
         assertEquals(false, phaseOne.isParked);
         assertEquals(406, phaseOne.cStatus.whereIs());
 
+        // 11
         for (int l = 406; l < 501; l++) {
             Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
             Mockito.when(ultraSonic2.getDistance()).thenReturn(10);

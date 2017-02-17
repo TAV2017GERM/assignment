@@ -5,6 +5,12 @@ package Models;
  */
 public class Actuators implements ActuatorsInterface {
 
+    /**
+     * Increase the position of the car
+     *
+     * @param position
+     * @return the current position of the car
+     */
     @Override
     public int moveForward(int position) {
         if (position >= 0 && position < 500) {
@@ -13,6 +19,12 @@ public class Actuators implements ActuatorsInterface {
         return position;
     }
 
+    /**
+     * Decrease the position of the car
+     *
+     * @param position
+     * @return the current position of the car
+     */
     @Override
     public int moveBackward(int position) {
         if (position > 0 && position <= 500) {

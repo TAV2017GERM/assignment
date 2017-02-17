@@ -31,7 +31,12 @@ public class Navigation extends Observable implements NavigationInterface {
 
     }
 
-
+    /**
+     * Moves the car 1 meter forward. Returns the current position of the car and the status of the status of
+     * the detected parking places up till now.
+     *
+     * @return the current CarStatus
+     */
     public int[] moveForward() {
         if (cStatus.whereIs() < 500 && !isParked) {  // Added so that it doesn't move past 500
             if (!drivingForward) {
@@ -58,6 +63,11 @@ public class Navigation extends Observable implements NavigationInterface {
         return cStatus.getCarStatus();       // Return the status of the car
     }
 
+    /**
+     * Method that behaves as MoveForward, with the difference that it moves the car 1 meter backwards.
+     *
+     * @return the current CarStatus
+     */
     public int[] moveBackward() {
         if (cStatus.whereIs() > 1 && !isParked) {     // Added so that it doesn't move past 0
             if (drivingForward) {
@@ -85,6 +95,11 @@ public class Navigation extends Observable implements NavigationInterface {
         return cStatus.getCarStatus();       // Return the status of the car
     }
 
+    /**
+     * It moves the car to the beginning of the current 5 meter free stretch of parking place,
+     * if it is already detected or moves the car forwards towards the end of the street until such a stretch is detected.
+     * Then it performs a pre-programmed reverse parallel parking maneuver.
+     */
     public void park() {
         int carPos = cStatus.whereIs();                       // Initialize basic counter
 
@@ -117,6 +132,9 @@ public class Navigation extends Observable implements NavigationInterface {
 
     }
 
+    /**
+     * It moves the car forward (and to left) to front of the parking place, if it is parked.
+     */
     public void unPark() {
         if (isParked) {
             isParked = false;
@@ -124,6 +142,13 @@ public class Navigation extends Observable implements NavigationInterface {
         }
     }
 
+    /**
+     * his method queries the two ultrasound sensors at least 5 times and filters the noise in their results
+     * and returns the distance to the nearest object in the right hand side. If one sensor is detected to continuously
+     * return very noisy output, it should be completely disregarded.
+     *
+     * @return int 1 if there is free space or int 0 it it isn't
+     */
     public int isEmpty() {
         //simulate random sensor data
         int k = 0;
