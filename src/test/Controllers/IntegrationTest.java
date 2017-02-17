@@ -32,7 +32,7 @@ public class IntegrationTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        spy = Mockito.spy(phaseOne);
+        spy = Mockito.spy(Navigation.class);
     }
 
     @After
@@ -213,39 +213,41 @@ public class IntegrationTest {
             }
         }
 
-        // 3
-        for (int i = 0; i < 501; i++) {
+        for (int i = 0; i < 500; i++) {
 
-            if ((i + 1) > 50 && (i + 1) < 56) {
+            if ((i + 1) > 1 && (i + 1) < 6 || (i + 1) > 10 && (i + 1) < 15) {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(150);
                 phaseOne.moveForward();
+                assertEquals(1, phaseOne.isEmpty());
             } else if ((i + 1) == 40) {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
                 phaseOne.moveForward();
+                assertEquals(0, phaseOne.isEmpty());
             } else if ((i + 1) == 41) {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
                 phaseOne.moveForward();
+                assertEquals(0, phaseOne.isEmpty());
             } else if ((i + 1) == 42) {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
                 phaseOne.moveForward();
-            } else if (((i + 1) > 495 && (i + 1) < 501) || ((i + 1) > 30 && (i + 1) < 36)) {
-
+                assertEquals(0, phaseOne.isEmpty());
+            } else if(((i + 1) > 495 && (i + 1) < 501) || ((i + 1) > 30 && (i + 1) < 36)){
                 phaseOne.moveForward();
+                assertEquals(1, phaseOne.isEmpty());
             }else {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
                 phaseOne.moveForward();
+                assertEquals(0, phaseOne.isEmpty());
             }
         }
 
         assertEquals(500, phaseOne.cStatus.whereIs());
 
-
-        // 8
         for (int j = 500; j > 0; j--) {
 
             if (j == 1) {
@@ -253,38 +255,47 @@ public class IntegrationTest {
             } else {
                 Mockito.when(actuators.moveBackward(j)).thenReturn(j - 1);
             }
+        }
 
-            if ((j - 1) > 50 && (j - 1) < 56) {
+        for (int j = 500; j > 1; j--) {
+
+            if ((j - 1) > 1 && (j - 1) < 6 || (j - 1) > 10 && (j - 1) < 15) {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(150);
                 phaseOne.moveBackward();
+                assertEquals(1, phaseOne.isEmpty());
             } else if ((j - 1) == 40) {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
                 phaseOne.moveBackward();
+                assertEquals(0, phaseOne.isEmpty());
             } else if ((j - 1) == 41) {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
                 phaseOne.moveBackward();
+                assertEquals(0, phaseOne.isEmpty());
             } else if ((j - 1) == 42) {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(300);
                 phaseOne.moveBackward();
-            } else if (((j - 1) > 495 && (j - 1) < 501) || ((j - 1) > 30 && (j - 1) < 36)) {
-                doReturn(0).when(spy).isEmpty();
+                assertEquals(0, phaseOne.isEmpty());
+            } else if(((j - 1) > 495 && (j - 1) < 501) || ((j - 1) > 30 && (j - 1) < 36)){
                 phaseOne.moveBackward();
+                assertEquals(1, phaseOne.isEmpty());
             }else {
                 Mockito.when(ultraSonic.getDistance()).thenReturn(-1);
                 Mockito.when(ultraSonic2.getDistance()).thenReturn(10);
                 phaseOne.moveBackward();
+                assertEquals(0, phaseOne.isEmpty());
             }
         }
 
-        // 9
+        assertEquals(1, phaseOne.cStatus.whereIs());
+
         phaseOne.park();
 
         assertEquals(true, phaseOne.isParked);
-        assertEquals(500, phaseOne.cStatus.whereIs());
+        assertEquals(35, phaseOne.cStatus.whereIs());
 
     }
 

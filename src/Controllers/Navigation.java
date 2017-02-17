@@ -51,13 +51,11 @@ public class Navigation extends Observable implements NavigationInterface {
             cStatus.setCarPosition(newCarPos);
 
             if (isEmpty() == 1) {
-                System.out.println("fwd ret 1 at " + newCarPos);
                 IS_EMPTY_COUNTER++;
                 if (IS_EMPTY_COUNTER == 5) {
                     cStatus.registerParkingPlaces(1);
                 }
             } else {
-                System.out.println("bkd ret 0 at " + newCarPos);
                 IS_EMPTY_COUNTER = 0;
                 cStatus.registerParkingPlaces(0);
             }
@@ -85,13 +83,11 @@ public class Navigation extends Observable implements NavigationInterface {
             cStatus.setCarPosition(newCarPos);
 
             if (isEmpty() == 1) {
-                System.out.println("bkd ret 1 at " + newCarPos);
                 IS_EMPTY_COUNTER++;
                 if (IS_EMPTY_COUNTER == 5) {
                     cStatus.registerParkingPlaces(-1);
                 }
             } else {
-                System.out.println("bkd ret 0 at " + newCarPos);
                 IS_EMPTY_COUNTER = 0;
                 cStatus.registerParkingPlaces(0);
             }
