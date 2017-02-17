@@ -260,9 +260,9 @@ public class NavigationTest {
 
     @Test
     public void testMockDataSensorsReturn0() throws Exception {
-        when(ultraSonic.getDistance()).thenReturn(-1);
-        when(ultraSonic2.getDistance()).thenReturn(150);
-        Assert.assertEquals(1, Navi.isEmpty());
+        when(ultraSonic.getDistance()).thenReturn(0);
+        when(ultraSonic2.getDistance()).thenReturn(0);
+        Assert.assertEquals(0, Navi.isEmpty());
 
         Mockito.verify(ultraSonic, times(5)).getDistance();
 
