@@ -30,7 +30,7 @@ public class ActuatorsTest {
     }
 
     @Test
-    public void testRunFwd() throws Exception {
+    public void testMoveForward() throws Exception {
         Mockito.when(actuators.moveForward(0)).thenReturn(1);
         Mockito.when(actuators.moveForward(500)).thenReturn(500);
         assertEquals(1, actuators.moveForward(0));
@@ -38,7 +38,7 @@ public class ActuatorsTest {
     }
 
     @Test
-    public void testRunBkd() throws Exception {
+    public void testMoveBackward() throws Exception {
         Mockito.when(actuators.moveBackward(0)).thenReturn(0);
         Mockito.when(actuators.moveBackward(1)).thenReturn(0);
         assertEquals(0, actuators.moveBackward(0));
