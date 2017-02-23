@@ -15,26 +15,37 @@ public class UI extends Observable implements Observer {
     private JButton driveBkd;
     private JButton driveFwd;
     private JLabel feed;
+    private boolean parked;
 
     public UI() {
+        parked = false;
         Navigation navigation = new Navigation();
-      //  this.addObserver(navigation);
+        this.addObserver(navigation);
         navigation.addObserver(this);
         park.addActionListener(actionEvent -> {
-            setChanged();
-            notifyObservers("Park");
+            if (!parked) {
+                setChanged();
+                notifyObservers("Park");
+            } else {
+                setChanged();
+                notifyObservers("Unpark");
+            }
         });
         driveBkd.addActionListener(actionEvent -> {
-            setChanged();
-            notifyObservers("Drive Bkd");
+            if (!parked) {
+                setChanged();
+                notifyObservers("Drive Bkd");
+            }
         });
         driveFwd.addActionListener(actionEvent -> {
-            setChanged();
-            notifyObservers("Drive Fwd");
+            if (!parked) {
+                setChanged();
+                notifyObservers("Drive Fwd");
+            }
         });
     }
 
-    private void setFeed(int[] carStatus, boolean b){
+    private void setFeed(int[] carStatus, boolean b) {
         if (!b) {
             int pos = carStatus[0];
             int parkingPlaces = 0;
@@ -45,17 +56,21 @@ public class UI extends Observable implements Observer {
 
                 if (parkingPlaces == 5) places += 1;
             }
-            feed.setText(" Car is at position " + pos + " found " + places + " parking places.");
+            feed.setText("        Car is at position " + pos + " found " + places + " parking places.");
         } else {
-            feed.setText("                         Parked                                     ");
+            feed.setText("                                Parked                              ");
+            park.setText("Unpark");
+            parked = true;
         }
     }
 
     @Override
     public void update(Observable observable, Object o) {
-        if (o.equals("Parked")){
+        if (o.equals("Parked")) {
             setFeed(null, true);
         } else {
+            park.setText("Park");
+            parked = false;
             int[] status = (int[]) o;
             setFeed(status, false);
         }

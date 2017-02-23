@@ -10,7 +10,7 @@ import java.util.Observer;
 /**
  * @author by Group4 on 2017-01-27.
  */
-public class Navigation extends Observable implements NavigationInterface {
+public class Navigation extends Observable implements NavigationInterface, Observer {
     boolean isParked;
     private boolean drivingForward;
     int IS_EMPTY_COUNTER;
@@ -60,6 +60,8 @@ public class Navigation extends Observable implements NavigationInterface {
                 cStatus.registerParkingPlaces(0);
             }
         }
+        setChanged();
+        notifyObservers(cStatus.getCarStatus());
         return cStatus.getCarStatus();       // Return the status of the car
     }
 
@@ -93,6 +95,8 @@ public class Navigation extends Observable implements NavigationInterface {
                 cStatus.registerParkingPlaces(0);
             }
         }
+        setChanged();
+        notifyObservers(cStatus.getCarStatus());
         return cStatus.getCarStatus();       // Return the status of the car
     }
 
@@ -113,16 +117,24 @@ public class Navigation extends Observable implements NavigationInterface {
                     while (cStatus.whereIs() != cStatus.fetchParkingPlace(carPos) && !isParked) {
                         moveForward();
                     }
-                    if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) isParked = true;
+                    if (cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)){
+                        isParked = true;
+                        setChanged();
+                        notifyObservers("Parked");
+                    }
                 }
             } else if (cStatus.whereIs() != 0 && cStatus.whereIs() == cStatus.fetchParkingPlace(carPos)) {
                 isParked = true;        // Set the parking state of the car to parked (true)
+                setChanged();
+                notifyObservers("Parked");
             } else {
                 do
                 {                            // Do While loop for iterating 500 times or until 5 consecutive free spaces are registered
                     moveForward();              // Move the car 1 meter and returns the status of the car
                     if (IS_EMPTY_COUNTER == 5) {    // Check if there is enough spaces (5) to park the car or not
                         isParked = true;        // Set the parking state of the car to parked (true)
+                        setChanged();
+                        notifyObservers("Parked");
                         IS_EMPTY_COUNTER = 0;       // Reset the IS_EMPTY_COUNTER of the car
                     }
                     carPos++;
@@ -140,6 +152,10 @@ public class Navigation extends Observable implements NavigationInterface {
         if (isParked) {
             isParked = false;
             if (cStatus.whereIs() != 500) moveForward();
+            else{
+                setChanged();
+                notifyObservers(cStatus.getCarStatus());
+            }
         }
     }
 
@@ -183,6 +199,7 @@ public class Navigation extends Observable implements NavigationInterface {
             shared_mean = (mean1 + mean2) / 2;  // mean value from both sensors
 
         } else if (total1 == 0 && total2 == 0) {
+            System.out.println("not empty");
             return 0;
         } else if (total1 == 0) {
             shared_mean = total2 / counter2;
@@ -192,15 +209,24 @@ public class Navigation extends Observable implements NavigationInterface {
 
 
         if (shared_mean >= 150) { //enough place to park
+            System.out.println("empty");
             return 1;
         } else {
+            System.out.println("not empty");
             return 0;
         }
     }
 
-//      Method is intended for UI class, it is not used yet.
-//    @Override
-//    public void update(Observable observable, Object o) {
-//
-//    }
+    @Override
+    public void update(Observable observable, Object o) {
+        if (o.equals("Drive Fwd")){
+            this.moveForward();
+        } else if (o.equals("Drive Bkd")){
+            this.moveBackward();
+        } else if (o.equals("Park")){
+            this.park();
+        } else if (o.equals("Unpark")){
+            this.unPark();
+        }
+    }
 }

@@ -54,7 +54,7 @@
           <foreground color="-1"/>
           <horizontalAlignment value="10"/>
           <horizontalTextPosition value="11"/>
-          <text value="  Car is at position X and found X parking places."/>
+          <text value=""/>
         </properties>
       </component>
     </children>
