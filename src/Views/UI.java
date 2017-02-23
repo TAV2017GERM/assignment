@@ -3,6 +3,7 @@ package Views;
 import Controllers.Navigation;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,13 +16,17 @@ public class UI extends Observable implements Observer {
     private JButton driveBkd;
     private JButton driveFwd;
     private JLabel feed;
+    private JProgressBar progressBar;
     private boolean parked;
 
     public UI() {
+
         parked = false;
+        park.setBackground(Color.GREEN);
         Navigation navigation = new Navigation();
         this.addObserver(navigation);
         navigation.addObserver(this);
+
         park.addActionListener(actionEvent -> {
             if (!parked) {
                 setChanged();
@@ -53,14 +58,18 @@ public class UI extends Observable implements Observer {
             for (int i = 1; i < carStatus.length; i++) {
                 if (carStatus[i] != 0) parkingPlaces += 1;
                 else parkingPlaces = 0;
-
                 if (parkingPlaces == 5) places += 1;
             }
+
             feed.setText("        Car is at position " + pos + " found " + places + " parking places.");
+            progressBar.setValue(pos);
+            progressBar.setStringPainted(true);
+            progressBar.setString(String.valueOf(pos));
         } else {
             feed.setText("                                Parked                              ");
             park.setText("Unpark");
             parked = true;
+
         }
     }
 
@@ -68,8 +77,10 @@ public class UI extends Observable implements Observer {
     public void update(Observable observable, Object o) {
         if (o.equals("Parked")) {
             setFeed(null, true);
+            park.setBackground(Color.RED);
         } else {
             park.setText("Park");
+            park.setBackground(Color.GREEN);
             parked = false;
             int[] status = (int[]) o;
             setFeed(status, false);

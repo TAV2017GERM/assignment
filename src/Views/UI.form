@@ -57,6 +57,15 @@
           <text value=""/>
         </properties>
       </component>
+      <component id="df795" class="javax.swing.JProgressBar" binding="progressBar">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
+          <maximum value="500"/>
+          <stringPainted value="false"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
